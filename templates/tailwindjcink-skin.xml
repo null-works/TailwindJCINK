@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin>
+ <templates>
+  <item name='memberlist_row'></item>
+  <item name='cat_head'></item>
+  <item name='mini_profile'></item>
+  <item name='profile'></item>
+  <item name='memberlist_head'></item>
+  <item name='subf_head'></item>
+  <item name='topic_list_head'></item>
+  <item name='redirect_row'></item>
+  <item name='forum_row'></item>
+  <item name='post_row'></item>
+  <item name='board_stats'></item>
+  <item name='topic_row'></item>
+ </templates>
+ <macros>
+ </macros>
+ <wrapper><![CDATA[<!DOCTYPE html>
+<html>
+<head>
+<title><% TITLE %></title>
+<% CSS %>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        forum: {
+          bg: 'var(--forum-bg)',
+          surface: 'var(--forum-surface)',
+          border: 'var(--forum-border)',
+          text: 'var(--forum-text)',
+          muted: 'var(--forum-muted)',
+          accent: 'var(--forum-accent)',
+        }
+      },
+      maxWidth: {
+        'forum': '1200px',
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="bg-forum-bg text-forum-text">
+<div id="wrapper" class="max-w-forum mx-auto px-4 py-4">
+  <% BOARD HEADER %>
+  <div id="navigation" class="mb-4">
+    <% NAVIGATION %>
+  </div>
+  <% DSHOUTBOX %>
+  <% BOARD %>
+  <div id="skin_selector" class="my-4">
+    <% SKIN_SELECTOR %>
+  </div>
+  <% COPYRIGHT %>
+</div>
+</body>
+</html>]]></wrapper>
+ <css><![CDATA[/*
+  TailwindJCINK - Minimal Base Stylesheet
+
+  This is intentionally minimal. Tailwind CSS handles most styling via the CDN.
+  Add custom CSS here only for JCINK-specific overrides.
+*/
+
+/* CSS Variables for theme colors */
+:root {
+  --forum-bg: #f1f5f9;
+  --forum-surface: #ffffff;
+  --forum-border: #e2e8f0;
+  --forum-text: #1e293b;
+  --forum-muted: #64748b;
+  --forum-accent: #0ea5e9;
+}
+
+/* Dark mode variables */
+.dark {
+  --forum-bg: #0f172a;
+  --forum-surface: #1e293b;
+  --forum-border: #334155;
+  --forum-text: #f1f5f9;
+  --forum-muted: #94a3b8;
+  --forum-accent: #38bdf8;
+}]]></css>
+</skin>
