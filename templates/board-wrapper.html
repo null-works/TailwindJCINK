@@ -36,13 +36,212 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Theme CSS -->
-  <%CSS%>
+  <!-- Tailwind CSS Play CDN - JIT in browser! -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#082f49',
+            },
+            secondary: {
+              50: '#fdf4ff',
+              100: '#fae8ff',
+              200: '#f5d0fe',
+              300: '#f0abfc',
+              400: '#e879f9',
+              500: '#d946ef',
+              600: '#c026d3',
+              700: '#a21caf',
+              800: '#86198f',
+              900: '#701a75',
+              950: '#4a044e',
+            },
+            forum: {
+              bg: 'var(--forum-bg)',
+              surface: 'var(--forum-surface)',
+              border: 'var(--forum-border)',
+              text: 'var(--forum-text)',
+              'text-muted': 'var(--forum-text-muted)',
+              accent: 'var(--forum-accent)',
+              'accent-hover': 'var(--forum-accent-hover)',
+            },
+          },
+          fontFamily: {
+            forum: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: {
+            forum: '1200px',
+            'forum-wide': '1400px',
+          },
+          borderRadius: {
+            forum: '0.5rem',
+          },
+          boxShadow: {
+            forum: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+            'forum-lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+          },
+          width: {
+            'avatar-sm': '40px',
+            'avatar-md': '80px',
+            'avatar-lg': '150px',
+          },
+          height: {
+            'avatar-sm': '40px',
+            'avatar-md': '80px',
+            'avatar-lg': '150px',
+          },
+          zIndex: {
+            dropdown: '100',
+            sticky: '200',
+            modal: '300',
+          },
+        },
+      },
+    }
+  </script>
 
-  <!-- Additional custom styles can go here -->
-  <style>
-    /* Any quick overrides */
+  <!-- CSS Variables & Component Styles -->
+  <style type="text/tailwindcss">
+    /* Theme Variables - Edit these to customize colors! */
+    :root {
+      --forum-bg: #f1f5f9;
+      --forum-surface: #ffffff;
+      --forum-border: #e2e8f0;
+      --forum-text: #1e293b;
+      --forum-text-muted: #64748b;
+      --forum-accent: #0ea5e9;
+      --forum-accent-hover: #0284c7;
+    }
+
+    .dark {
+      --forum-bg: #0f172a;
+      --forum-surface: #1e293b;
+      --forum-border: #334155;
+      --forum-text: #f1f5f9;
+      --forum-text-muted: #94a3b8;
+      --forum-accent: #38bdf8;
+      --forum-accent-hover: #7dd3fc;
+    }
+
+    /* Base Styles */
+    @layer base {
+      html {
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+      body {
+        @apply bg-forum-bg text-forum-text;
+      }
+      a {
+        @apply text-forum-accent hover:text-forum-accent-hover transition-colors;
+      }
+    }
+
+    /* Component Classes */
+    @layer components {
+      .forum-container {
+        @apply max-w-forum mx-auto px-4 py-6;
+      }
+      .forum-card {
+        @apply bg-forum-surface rounded-forum shadow-forum border border-forum-border overflow-hidden;
+      }
+      .forum-card-header {
+        @apply px-5 py-4 border-b border-forum-border bg-gradient-to-r from-primary-500 to-primary-600 text-white;
+      }
+      .forum-card-body {
+        @apply px-5 py-4;
+      }
+      .forum-card-footer {
+        @apply px-5 py-3 border-t border-forum-border bg-slate-50 dark:bg-slate-800/50;
+      }
+      .forum-nav {
+        @apply bg-forum-surface border-b border-forum-border shadow-sm;
+      }
+      .forum-nav-inner {
+        @apply max-w-forum mx-auto px-4 flex items-center justify-between h-16;
+      }
+      .forum-nav-brand {
+        @apply text-xl font-bold text-forum-text;
+      }
+      .forum-nav-links {
+        @apply flex items-center gap-1;
+      }
+      .forum-nav-link {
+        @apply px-4 py-2 rounded-forum text-sm font-medium text-forum-text-muted hover:text-forum-text hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors;
+      }
+      .forum-nav-link.active {
+        @apply text-primary-600 bg-primary-50 dark:bg-primary-900/30 dark:text-primary-400;
+      }
+      .btn {
+        @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-forum font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+      }
+      .btn-primary {
+        @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+      }
+      .btn-secondary {
+        @apply bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600;
+      }
+      .btn-ghost {
+        @apply text-forum-text-muted hover:text-forum-text hover:bg-slate-100 dark:hover:bg-slate-800;
+      }
+      .btn-sm {
+        @apply px-3 py-1.5 text-xs;
+      }
+      .dropdown {
+        @apply relative inline-block;
+      }
+      .dropdown-menu {
+        @apply absolute right-0 mt-2 w-48 rounded-forum bg-forum-surface border border-forum-border shadow-forum-lg z-dropdown opacity-0 invisible transition-all duration-200 origin-top-right scale-95;
+      }
+      .dropdown:hover .dropdown-menu,
+      .dropdown.open .dropdown-menu {
+        @apply opacity-100 visible scale-100;
+      }
+      .dropdown-item {
+        @apply block px-4 py-2 text-sm text-forum-text hover:bg-slate-100 dark:hover:bg-slate-800 first:rounded-t-forum last:rounded-b-forum;
+      }
+      .stats-box {
+        @apply bg-forum-surface rounded-forum border border-forum-border p-5;
+      }
+      .online-users {
+        @apply bg-forum-surface rounded-forum border border-forum-border p-5;
+      }
+      .online-users-header {
+        @apply font-semibold text-forum-text mb-3;
+      }
+      .online-users-list {
+        @apply flex flex-wrap gap-2;
+      }
+      .forum-footer {
+        @apply bg-forum-surface border-t border-forum-border mt-8;
+      }
+      .forum-footer-inner {
+        @apply max-w-forum mx-auto px-4 py-8;
+      }
+      .forum-footer-links {
+        @apply flex flex-wrap justify-center gap-6 text-sm text-forum-text-muted;
+      }
+      .forum-footer-copyright {
+        @apply text-center text-sm text-forum-text-muted mt-4;
+      }
+    }
   </style>
+
+  <!-- JCINK CSS -->
+  <%CSS%>
 </head>
 <body class="bg-forum-bg text-forum-text min-h-screen flex flex-col">
 

@@ -4,51 +4,69 @@ A modern, responsive JCINK forum theme built with Tailwind CSS. This theme provi
 
 ## Features
 
-- **Tailwind CSS 3.4+** - Utility-first CSS framework
+- **Tailwind CSS Play CDN** - JIT compilation directly in the browser (no build step needed!)
 - **Dark Mode** - Automatic and toggle-based dark mode support
 - **Responsive Design** - Mobile-first approach
 - **Modular Templates** - Easy to customize individual components
-- **CSS Variables** - Quick theme customization without rebuilding
+- **CSS Variables** - Quick theme customization
 - **Modern UI** - Clean cards, badges, buttons, and typography
 
-## Quick Start
+## Quick Start (Recommended: Play CDN)
+
+The templates use the **Tailwind Play CDN** which provides JIT (Just-In-Time) compilation directly in the browser. This means:
+
+- No build step required
+- Use any Tailwind class directly in your templates
+- Instant updates when you edit
+- Perfect for JCINK hosting
+
+### Deploying to JCINK
+
+1. **Copy the Board Wrapper:**
+   - Go to ACP > Skins & Templates > HTML Templates > Board Wrapper
+   - Replace with contents of `templates/board-wrapper.html`
+   - This includes the Tailwind CDN and all configuration
+
+2. **Copy Other Templates:**
+   - Go to ACP > Skins & Templates > HTML Templates
+   - Replace each template with the corresponding file from the `templates/` folder
+
+3. **That's it!** The Tailwind CDN handles everything automatically.
+
+### Using Any Tailwind Class
+
+With the Play CDN, you can use ANY Tailwind utility class directly in your HTML:
+
+```html
+<div class="bg-gradient-to-r from-purple-500 to-pink-500 p-8 rounded-2xl shadow-xl">
+  <h1 class="text-4xl font-black text-white tracking-tight">Hello!</h1>
+</div>
+```
+
+## Alternative: Pre-compiled CSS
+
+If you prefer pre-compiled CSS (smaller file size, no CDN dependency):
 
 ### Prerequisites
 
 - Node.js 16+ and npm
-- A JCINK forum with skin editing access
 
 ### Installation
 
-1. Clone or download this repository
-2. Install dependencies:
-
 ```bash
 npm install
-```
-
-3. Build the CSS:
-
-```bash
 npm run build
 ```
 
-4. For development with auto-reload:
-
-```bash
-npm run watch
-```
-
-### Deploying to JCINK
+### Deploying Pre-compiled CSS
 
 1. **Upload the CSS:**
    - Go to ACP > Skins & Templates > CSS
-   - Replace the CSS content with the contents of `dist/theme.css`
-   - Or use `dist/theme.min.css` for production
+   - Replace with contents of `dist/theme.css` (or `dist/theme.min.css`)
 
 2. **Update HTML Templates:**
-   - Go to ACP > Skins & Templates > HTML Templates
-   - Replace each template with the corresponding file from the `templates/` folder
+   - Remove the `<script src="https://cdn.tailwindcss.com">` and config from the board wrapper
+   - Replace templates as described above
 
 ### Template Files
 
