@@ -29,8 +29,11 @@ The templates use the **Tailwind Play CDN** which provides JIT (Just-In-Time) co
 1. Log into your JCINK Admin CP (ACP)
 2. Go to **Skins & Templates** → **Manage Skin Sets**
 3. Under **Create New Skin Set**, select a skin to base it on from the dropdown
+   - **Brand new boards:** Select "IP.Board" or whichever default skin is available
 4. Click **Create new Skin Set**
 5. Your new skin will appear in the **Current Skins Used by Members** list
+
+> **Note for brand new JCINK boards:** If you prefer to edit the default skin directly instead of creating a new one, you can skip this step and edit the existing "IP.Board" skin in Steps 2-3. However, creating a new skin is recommended so you have a backup.
 
 ### Step 2: Install the Board Wrapper
 
@@ -58,8 +61,10 @@ The stylesheet provides all component classes and is loaded via the `<% CSS %>` 
 ### Step 4: Edit HTML Templates
 
 1. Go to **Skins & Templates** → **HTML Templates**
-2. Make sure your new skin is selected in the **Editing Skin** dropdown at the top
-3. You'll see a list of template categories to expand
+2. At the top of the page, locate the **Editing Skin** dropdown
+   - **Brand new boards:** If you don't see a dropdown, your board only has one skin. The templates you edit will apply to that skin.
+   - **Multiple skins:** Select the skin you created in Step 1 from the dropdown
+3. You'll see a list of template categories (Board Index Templates, Topic List Templates, etc.) - click to expand them
 
 ### Step 5: Install Category & Forum Templates
 
