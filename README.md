@@ -28,63 +28,74 @@ The templates use the **Tailwind Play CDN** which provides JIT (Just-In-Time) co
 
 1. Log into your JCINK Admin CP (ACP)
 2. Go to **Skins & Templates** → **Manage Skin Sets**
-3. Click **Add New Skin Set**
-4. Name it something like "Tailwind Theme"
-5. Click **Create Skin Set**
+3. Under **Create New Skin Set**, select a skin to base it on from the dropdown
+4. Click **Create new Skin Set**
+5. Your new skin will appear in the **Current Skins Used by Members** list
 
 ### Step 2: Install the Board Wrapper
 
 This is the most important template - it contains the Tailwind CDN and all configuration.
 
+1. In **Manage Skin Sets**, find your new skin in the list
+2. Click the **Board Wrapper** link under your skin's title (next to "Edit:")
+3. **Select all** the existing code and **delete it**
+4. Copy the entire contents of `templates/board-wrapper.html` from this repo
+5. Paste it into the text area
+6. Click **Update**
+
+### Step 3: Install the Stylesheet (Optional)
+
+1. In **Manage Skin Sets**, click the **Stylesheet** link under your skin
+2. You can add any additional custom CSS here
+3. Click **Update**
+
+### Step 4: Edit HTML Templates
+
 1. Go to **Skins & Templates** → **HTML Templates**
-2. Make sure your new skin is selected in the dropdown
-3. Click **Board Wrapper**
-4. **Select all** the existing code and **delete it**
-5. Copy the entire contents of `templates/board-wrapper.html` from this repo
-6. Paste it into the Board Wrapper text area
-7. Click **Update Template**
+2. Make sure your new skin is selected in the **Editing Skin** dropdown at the top
+3. You'll see a list of template categories to expand
 
-### Step 3: Install Category & Forum Templates
+### Step 5: Install Category & Forum Templates
 
-1. Still in **HTML Templates**, expand **Board Index Templates**
+1. Expand **Board Index Templates**
 2. Click **Category Row**
    - Delete existing code
    - Paste contents of `templates/category-row.html`
-   - Click **Update Template**
+   - Click **Update**
 3. Click **Forum Row**
    - Delete existing code
    - Paste contents of `templates/forum-row.html`
-   - Click **Update Template**
+   - Click **Update**
 
-### Step 4: Install Topic List Templates
+### Step 6: Install Topic List Templates
 
 1. Expand **Topic List Templates**
 2. Click **Topic Row**
    - Delete existing code
    - Paste contents of `templates/topic-row.html`
-   - Click **Update Template**
+   - Click **Update**
 
-### Step 5: Install Topic View Templates
+### Step 7: Install Topic View Templates
 
 1. Expand **Topic View Templates**
 2. Click **Post Row** (this is the post display)
    - Delete existing code
    - Paste contents of `templates/post-display.html`
-   - Click **Update Template**
+   - Click **Update**
 3. Click **Mini Profile**
    - Delete existing code
    - Paste contents of `templates/mini-profile.html`
-   - Click **Update Template**
+   - Click **Update**
 
-### Step 6: Install Profile Template
+### Step 8: Install Profile Template
 
 1. Expand **Profile Templates**
 2. Click **Profile**
    - Delete existing code
    - Paste contents of `templates/profile.html`
-   - Click **Update Template**
+   - Click **Update**
 
-### Step 7: Set as Default (Optional)
+### Step 9: Set as Default (Optional)
 
 1. Go to **Skins & Templates** → **Manage Skin Sets**
 2. Find your new Tailwind skin
