@@ -1,26 +1,358 @@
-/*
-  TailwindJCINK - Minimal Base Stylesheet
+/*===============================================
+ * TailwindJCINK Stylesheet
+ * Built with Tailwind CSS + CSS Variables
+ *===============================================*/
 
-  This is intentionally minimal. Tailwind CSS handles most styling via the CDN.
-  Add custom CSS here only for JCINK-specific overrides.
-*/
+/* Light Theme (Default) */
+.theme-light {
+  /* Accent colors */
+  --accent-1: #3b82f6;
+  --accent-2: #2563eb;
+  --accent-3: #1d4ed8;
+  --warn: #ef4444;
 
-/* CSS Variables for theme colors */
-:root {
-  --forum-bg: #f1f5f9;
-  --forum-surface: #ffffff;
-  --forum-border: #e2e8f0;
-  --forum-text: #1e293b;
-  --forum-muted: #64748b;
-  --forum-accent: #0ea5e9;
+  /* Background layers (light to dark) */
+  --bg-1: #ffffff;
+  --bg-2: #f8fafc;
+  --bg-3: #e2e8f0;
+  --bg-4: #f1f5f9;
+
+  /* Text colors */
+  --text-clear: #0f172a;
+  --text-hiCon: #1e293b;
+  --text-medCon: #475569;
+  --text-loCon: #94a3b8;
 }
 
-/* Dark mode variables */
-.dark {
-  --forum-bg: #0f172a;
-  --forum-surface: #1e293b;
-  --forum-border: #334155;
-  --forum-text: #f1f5f9;
-  --forum-muted: #94a3b8;
-  --forum-accent: #38bdf8;
+/* Dark Theme */
+.theme-dark {
+  /* Accent colors */
+  --accent-1: #60a5fa;
+  --accent-2: #3b82f6;
+  --accent-3: #2563eb;
+  --warn: #f87171;
+
+  /* Background layers (light to dark) */
+  --bg-1: #1e293b;
+  --bg-2: #334155;
+  --bg-3: #475569;
+  --bg-4: #0f172a;
+
+  /* Text colors */
+  --text-clear: #f8fafc;
+  --text-hiCon: #e2e8f0;
+  --text-medCon: #cbd5e1;
+  --text-loCon: #64748b;
+}
+
+/*===============================================
+ * Base Styles
+ *===============================================*/
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Links */
+a:link, a:visited, a:active {
+  text-decoration: none;
+  color: var(--accent-1);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-2);
+}
+
+/*===============================================
+ * JCINK Default Elements Override
+ *===============================================*/
+
+/* Tables */
+.tableborder {
+  background-color: var(--bg-1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.tablefill, .tablepad {
+  padding: 1rem;
+}
+
+/* Row styles */
+.row1, .row2, .row3, .row4 {
+  background-color: var(--bg-1);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--bg-3);
+}
+
+.row2 {
+  background-color: var(--bg-2);
+}
+
+.darkrow1, .darkrow2, .darkrow3 {
+  background-color: var(--bg-2);
+  padding: 0.5rem 1rem;
+}
+
+/* Category/Section headers */
+.maintitle {
+  background-color: var(--bg-2);
+  color: var(--text-clear);
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--accent-1);
+}
+
+.maintitle a {
+  color: var(--text-clear) !important;
+}
+
+.titlemedium {
+  background-color: var(--bg-2);
+  color: var(--text-loCon);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Form elements */
+.forminput, .textinput, input[type="text"], input[type="password"], select, textarea {
+  background-color: var(--bg-2);
+  border: 1px solid var(--bg-3);
+  color: var(--text-medCon);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.forminput:focus, .textinput:focus, input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+textarea.textinput {
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+}
+
+/* Buttons */
+input[type="submit"], input[type="button"], input[type="reset"], .button {
+  background-color: var(--accent-1);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover, .button:hover {
+  background-color: var(--accent-2);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pagination a, .pagination .pagination_current {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.pagination a {
+  background-color: var(--bg-2);
+  color: var(--text-medCon);
+}
+
+.pagination a:hover {
+  background-color: var(--bg-3);
+  color: var(--text-clear);
+}
+
+.pagination .pagination_current {
+  background-color: var(--accent-1);
+  color: white;
+}
+
+/*===============================================
+ * Navigation Styles
+ *===============================================*/
+
+#navstrip {
+  display: flex;
+  gap: 1.5rem;
+}
+
+#navstrip a {
+  color: var(--text-medCon);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+#navstrip a:hover {
+  color: var(--accent-1);
+  border-bottom-color: var(--accent-1);
+}
+
+/*===============================================
+ * Post & Quote Styles
+ *===============================================*/
+
+#QUOTE, .quoteblock {
+  background-color: var(--bg-2);
+  border-left: 3px solid var(--accent-1);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+
+#CODE, .codeblock {
+  background-color: var(--bg-4);
+  border: 1px solid var(--bg-3);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.375rem;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+}
+
+/*===============================================
+ * User/Member Styles
+ *===============================================*/
+
+.normalname a {
+  font-weight: 600;
+}
+
+.postlinksbar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+}
+
+.postlinksbar a, .postlinksbar span {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--bg-2);
+  border-radius: 0.25rem;
+  color: var(--text-medCon);
+}
+
+.postlinksbar a:hover {
+  background-color: var(--accent-1);
+  color: white;
+}
+
+/*===============================================
+ * Warning & Status Colors
+ *===============================================*/
+
+.warngood {
+  color: #22c55e;
+}
+
+.warnbad, .closed {
+  color: var(--warn);
+}
+
+/*===============================================
+ * Misc Elements
+ *===============================================*/
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--bg-3);
+  margin: 1rem 0;
+}
+
+/* Hide elements */
+.acp-0, .mcp-0 {
+  display: none !important;
+}
+
+.g-2 {
+  display: inline !important;
+}
+
+.m-2 {
+  display: none !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-loCon);
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--accent-1);
+  color: white;
+}
+
+/*===============================================
+ * Responsive Adjustments
+ *===============================================*/
+
+@media (max-width: 768px) {
+  .tableborder {
+    border-radius: 0;
+  }
+
+  .maintitle {
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .row1, .row2, .row3, .row4 {
+    padding: 0.5rem 0.75rem;
+  }
 }
