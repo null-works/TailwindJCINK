@@ -20,18 +20,91 @@ The templates use the **Tailwind Play CDN** which provides JIT (Just-In-Time) co
 - Instant updates when you edit
 - Perfect for JCINK hosting
 
-### Deploying to JCINK
+---
 
-1. **Copy the Board Wrapper:**
-   - Go to ACP > Skins & Templates > HTML Templates > Board Wrapper
-   - Replace with contents of `templates/board-wrapper.html`
-   - This includes the Tailwind CDN and all configuration
+## JCINK Installation Guide
 
-2. **Copy Other Templates:**
-   - Go to ACP > Skins & Templates > HTML Templates
-   - Replace each template with the corresponding file from the `templates/` folder
+### Step 1: Create a New Skin (Recommended)
 
-3. **That's it!** The Tailwind CDN handles everything automatically.
+1. Log into your JCINK Admin CP (ACP)
+2. Go to **Skins & Templates** → **Manage Skin Sets**
+3. Click **Add New Skin Set**
+4. Name it something like "Tailwind Theme"
+5. Click **Create Skin Set**
+
+### Step 2: Install the Board Wrapper
+
+This is the most important template - it contains the Tailwind CDN and all configuration.
+
+1. Go to **Skins & Templates** → **HTML Templates**
+2. Make sure your new skin is selected in the dropdown
+3. Click **Board Wrapper**
+4. **Select all** the existing code and **delete it**
+5. Copy the entire contents of `templates/board-wrapper.html` from this repo
+6. Paste it into the Board Wrapper text area
+7. Click **Update Template**
+
+### Step 3: Install Category & Forum Templates
+
+1. Still in **HTML Templates**, expand **Board Index Templates**
+2. Click **Category Row**
+   - Delete existing code
+   - Paste contents of `templates/category-row.html`
+   - Click **Update Template**
+3. Click **Forum Row**
+   - Delete existing code
+   - Paste contents of `templates/forum-row.html`
+   - Click **Update Template**
+
+### Step 4: Install Topic List Templates
+
+1. Expand **Topic List Templates**
+2. Click **Topic Row**
+   - Delete existing code
+   - Paste contents of `templates/topic-row.html`
+   - Click **Update Template**
+
+### Step 5: Install Topic View Templates
+
+1. Expand **Topic View Templates**
+2. Click **Post Row** (this is the post display)
+   - Delete existing code
+   - Paste contents of `templates/post-display.html`
+   - Click **Update Template**
+3. Click **Mini Profile**
+   - Delete existing code
+   - Paste contents of `templates/mini-profile.html`
+   - Click **Update Template**
+
+### Step 6: Install Profile Template
+
+1. Expand **Profile Templates**
+2. Click **Profile**
+   - Delete existing code
+   - Paste contents of `templates/profile.html`
+   - Click **Update Template**
+
+### Step 7: Set as Default (Optional)
+
+1. Go to **Skins & Templates** → **Manage Skin Sets**
+2. Find your new Tailwind skin
+3. Click **Set as Default** to make it the default for all visitors
+
+### Template Reference
+
+| Template File | JCINK Location |
+|---------------|----------------|
+| `board-wrapper.html` | HTML Templates → Board Wrapper |
+| `category-row.html` | HTML Templates → Board Index Templates → Category Row |
+| `forum-row.html` | HTML Templates → Board Index Templates → Forum Row |
+| `topic-list.html` | HTML Templates → Topic List Templates → Topic List Wrapper |
+| `topic-row.html` | HTML Templates → Topic List Templates → Topic Row |
+| `topic-view.html` | HTML Templates → Topic View Templates → Topic View Wrapper |
+| `post-display.html` | HTML Templates → Topic View Templates → Post Row |
+| `mini-profile.html` | HTML Templates → Topic View Templates → Mini Profile |
+| `profile.html` | HTML Templates → Profile Templates → Profile |
+
+---
 
 ### Using Any Tailwind Class
 
@@ -184,11 +257,33 @@ The theme includes these pre-built components:
 
 1. **JCINK Variables**: The templates use JCINK variables like `<%BOARD_NAME%>`, `<%FORUM_ROWS%>`, etc. Don't remove these - they're replaced with actual content by JCINK.
 
-2. **CSS Hosting**: Consider hosting your compiled CSS on a CDN or external host for better performance.
+2. **Testing**: Always test on a development skin before deploying to your live forum.
 
-3. **Testing**: Test on a development skin before deploying to your live forum.
+3. **Backup**: Always backup your existing templates before making changes. You can export your current skin from Manage Skin Sets.
 
-4. **Backup**: Always backup your existing templates before making changes.
+4. **Customizing Colors**: Edit the CSS variables in the `<style type="text/tailwindcss">` block in the Board Wrapper to change theme colors instantly.
+
+5. **Adding Custom Components**: You can add new component classes in the `@layer components` section of the Board Wrapper.
+
+## Troubleshooting
+
+### Theme not loading correctly?
+
+- Make sure you copied the **entire** Board Wrapper template including all `<script>` tags
+- Check that the Tailwind CDN script is loading (look for errors in browser console)
+- Verify your skin is selected as default or you're viewing it via the skin switcher
+
+### Styles look broken?
+
+- The Board Wrapper must be installed first - it contains all the Tailwind configuration
+- Make sure you're using the skin you installed the templates on
+- Clear your browser cache (Ctrl+Shift+R or Cmd+Shift+R)
+
+### Variables showing as text?
+
+- JCINK variables like `<%BOARD_NAME%>` should be replaced automatically
+- If you see them as plain text, you may have accidentally escaped them
+- Re-copy the template from the original file
 
 ## License
 
