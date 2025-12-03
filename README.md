@@ -93,51 +93,47 @@ If you see "There are currently no existing Custom HTML Template sets", you need
 3. You'll see expandable template categories
 4. Continue to Step 5 to install templates manually
 
-### Step 5: Install Category & Forum Templates
+### Step 5: Install All HTML Templates
 
-1. Expand **Board Index Templates**
-2. Click **Category List Header**
-   - Delete existing code
-   - Paste contents of `templates/category-row.html`
-   - Click **Update**
-3. Click **Forum Row**
-   - Delete existing code
-   - Paste contents of `templates/forum-row.html`
-   - Click **Update**
+Install each template by clicking on its name, deleting existing code, pasting the new code, and clicking **Update**.
 
-### Step 6: Install Topic List Templates
+**Board Stats:**
+- Click **Board Stats** → Paste `templates/board-stats.html`
 
-1. Expand **Topic List Templates**
-2. Click **Topic List Header**
-   - Delete existing code
-   - Paste contents of `templates/topic-list.html`
-   - Click **Update**
-3. Click **Topic Row**
-   - Delete existing code
-   - Paste contents of `templates/topic-row.html`
-   - Click **Update**
+**Category Headers:**
+- Click **Category Headers** → Paste `templates/category-row.html`
 
-### Step 7: Install Topic View Templates
+**Forum Row:**
+- Click **Forum Row** → Paste `templates/forum-row.html`
 
-1. Expand **Topic View Templates**
-2. Click **Post Row**
-   - Delete existing code
-   - Paste contents of `templates/post-display.html`
-   - Click **Update**
+**Main Profile:**
+- Click **Main Profile** → Paste `templates/profile.html`
 
-### Step 8: Install Profile Templates
+**Member List Headers:**
+- Click **Member List Headers** → Paste `templates/member-list-headers.html`
 
-1. Expand **Profile Templates**
-2. Click **Mini Profile**
-   - Delete existing code
-   - Paste contents of `templates/mini-profile.html`
-   - Click **Update**
-3. Click **Main Profile**
-   - Delete existing code
-   - Paste contents of `templates/profile.html`
-   - Click **Update**
+**Member List Row:**
+- Click **Member List Row** → Paste `templates/member-list-row.html`
 
-### Step 9: Set as Default (Optional)
+**Mini Profile:**
+- Click **Mini Profile** → Paste `templates/mini-profile.html`
+
+**Post Row:**
+- Click **Post Row** → Paste `templates/post-display.html`
+
+**Redirect Row:**
+- Click **Redirect Row** → Paste `templates/redirect-row.html`
+
+**Subforum Headers:**
+- Click **Subforum Headers** → Paste `templates/subforum-headers.html`
+
+**Topic List Headers:**
+- Click **Topic List Headers** → Paste `templates/topic-list.html`
+
+**Topic Row:**
+- Click **Topic Row** → Paste `templates/topic-row.html`
+
+### Step 6: Set as Default (Optional)
 
 1. Go to **Skins & Templates** → **Manage Skin Sets**
 2. Find your new Tailwind skin
@@ -145,18 +141,23 @@ If you see "There are currently no existing Custom HTML Template sets", you need
 
 ### Template Reference
 
-| Template File | JCINK Location |
-|---------------|----------------|
-| `tailwindjcink-skin.xml` | Manage Skin Sets → Import (Stylesheet + Board Wrapper only) |
-| `stylesheet.css` | Skins & Templates → Manage Skin Sets → Stylesheet |
-| `board-wrapper.html` | Skins & Templates → Manage Skin Sets → Board Wrapper |
-| `category-row.html` | HTML Templates → Board Index Templates → Category List Header |
-| `forum-row.html` | HTML Templates → Board Index Templates → Forum Row |
-| `topic-list.html` | HTML Templates → Topic List Templates → Topic List Header |
-| `topic-row.html` | HTML Templates → Topic List Templates → Topic Row |
-| `post-display.html` | HTML Templates → Topic View Templates → Post Row |
-| `mini-profile.html` | HTML Templates → Profile Templates → Mini Profile |
-| `profile.html` | HTML Templates → Profile Templates → Main Profile |
+| Template File | JCINK Template Name |
+|---------------|---------------------|
+| `tailwindjcink-skin.xml` | Manage Skin Sets → Import (CSS + Wrapper only) |
+| `stylesheet.css` | Manage Skin Sets → Stylesheet |
+| `board-wrapper.html` | Manage Skin Sets → Board Wrapper |
+| `board-stats.html` | Board Stats |
+| `category-row.html` | Category Headers |
+| `forum-row.html` | Forum Row |
+| `member-list-headers.html` | Member List Headers |
+| `member-list-row.html` | Member List Row |
+| `mini-profile.html` | Mini Profile |
+| `post-display.html` | Post Row |
+| `profile.html` | Main Profile |
+| `redirect-row.html` | Redirect Row |
+| `subforum-headers.html` | Subforum Headers |
+| `topic-list.html` | Topic List Headers |
+| `topic-row.html` | Topic Row |
 
 ---
 
@@ -251,24 +252,28 @@ Dark mode is enabled by adding the `dark` class to the `<html>` element. The the
 ```
 TailwindJCINK/
 ├── templates/
-│   ├── tailwindjcink-skin.xml  # XML import file (imports all templates at once!)
-│   ├── stylesheet.css          # Main CSS (paste into JCINK Stylesheet)
-│   ├── board-wrapper.html      # Main page wrapper (paste into Board Wrapper)
-│   ├── category-row.html       # Category container
-│   ├── forum-row.html          # Individual forum row
-│   ├── topic-list.html         # Topic listing page
-│   ├── topic-row.html          # Individual topic row
-│   ├── topic-view.html         # Topic/thread view page
-│   ├── post-display.html       # Individual post display
-│   ├── mini-profile.html       # Post sidebar profile
-│   └── profile.html            # User profile page
+│   ├── tailwindjcink-skin.xml    # XML import (CSS + Wrapper only)
+│   ├── stylesheet.css            # Main CSS
+│   ├── board-wrapper.html        # Page wrapper with Tailwind CDN
+│   ├── board-stats.html          # Board statistics display
+│   ├── category-row.html         # Category headers
+│   ├── forum-row.html            # Forum row
+│   ├── member-list-headers.html  # Member list page header
+│   ├── member-list-row.html      # Individual member row
+│   ├── mini-profile.html         # Post sidebar mini profile
+│   ├── post-display.html         # Post row
+│   ├── profile.html              # Main profile page
+│   ├── redirect-row.html         # Redirect forum row
+│   ├── subforum-headers.html     # Subforum links
+│   ├── topic-list.html           # Topic list headers
+│   └── topic-row.html            # Topic row
 ├── src/
 │   └── css/
-│       └── main.css            # Tailwind source (for pre-compiled builds)
+│       └── main.css              # Tailwind source (for pre-compiled builds)
 ├── dist/
-│   └── theme.css               # Compiled CSS (generated by npm run build)
-├── tailwind.config.js          # Tailwind configuration
-├── package.json                # Node.js dependencies
+│   └── theme.css                 # Compiled CSS (generated by npm run build)
+├── tailwind.config.js            # Tailwind configuration
+├── package.json                  # Node.js dependencies
 └── README.md
 ```
 

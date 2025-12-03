@@ -1,0 +1,43 @@
+<!--
+  JCINK Subforum Headers Template
+
+  This template goes in: ACP > Skins & Templates > HTML Templates > Subforum Headers
+
+  This is used to display the list of subforums within a parent forum.
+
+  JCINK Variables Used:
+  - <%SUBFORUM_ID%> : Subforum ID
+  - <%SUBFORUM_NAME%> : Subforum name
+  - <%SUBFORUM_LINK%> : Link to the subforum
+  - <%SUBFORUM_ICON%> : Subforum status icon (new posts, etc.)
+  - <%SUBFORUM_DESC%> : Subforum description (if enabled)
+-->
+
+<div class="subforums-container">
+  <!-- Subforum Label -->
+  <span class="text-xs font-medium text-forum-muted uppercase tracking-wide">Subforums:</span>
+
+  <!-- Subforum Links -->
+  <div class="inline-flex flex-wrap items-center gap-2 ml-2">
+    <a href="<%SUBFORUM_LINK%>" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-sm bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors group" id="subforum-<%SUBFORUM_ID%>">
+      <!-- Subforum Icon -->
+      <span class="subforum-icon">
+        <%SUBFORUM_ICON%>
+      </span>
+
+      <!-- Subforum Name -->
+      <span class="text-forum-text group-hover:text-forum-accent transition-colors">
+        <%SUBFORUM_NAME%>
+      </span>
+    </a>
+  </div>
+</div>
+
+<!--
+  Alternative compact style (uncomment to use):
+
+  <span class="subforum-link">
+    <%SUBFORUM_ICON%>
+    <a href="<%SUBFORUM_LINK%>" class="text-sm hover:text-forum-accent"><%SUBFORUM_NAME%></a>
+  </span>
+-->
