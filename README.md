@@ -58,13 +58,26 @@ The stylesheet provides all component classes and is loaded via the `<% CSS %>` 
 
 **Important:** The stylesheet contains all the component classes (`.forum-card`, `.category-row`, `.post`, etc.) that the HTML templates reference. Without it, your forum will not display correctly.
 
-### Step 4: Edit HTML Templates
+### Step 4: Set Up HTML Templates
 
 1. Go to **Skins & Templates** → **HTML Templates**
-2. At the top of the page, locate the **Editing Skin** dropdown
-   - **Brand new boards:** If you don't see a dropdown, your board only has one skin. The templates you edit will apply to that skin.
-   - **Multiple skins:** Select the skin you created in Step 1 from the dropdown
-3. You'll see a list of template categories (Board Index Templates, Topic List Templates, etc.) - click to expand them
+
+**For brand new boards (no existing template sets):**
+
+If you see "There are currently no existing Custom HTML Template sets", you need to create one first:
+
+1. Under **Create a new HTML Template Set**:
+   - **Base new template set on...**: Select "New Blank Template Set" from the dropdown
+   - **Name for new template set...**: Enter a name (e.g., "TailwindJCINK")
+   - **Allocate this template set to skin...**: Select the skin you created in Step 1 (or your default skin)
+2. Click **Create a new HTML Template Set**
+3. You'll be taken to a page with expandable template categories (Board Index Templates, Topic List Templates, etc.)
+
+**For existing boards (template sets already exist):**
+
+1. You'll see a list of existing template sets
+2. Click on the template set name associated with your skin to edit it
+3. You'll see expandable template categories
 
 ### Step 5: Install Category & Forum Templates
 
