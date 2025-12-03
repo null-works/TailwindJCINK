@@ -1,28 +1,20 @@
-<!--
-  JCINK Category Row Template
-
-  This template goes in: ACP > Skins & Templates > HTML Templates > Board Index Templates > Category Row
-
-  JCINK Variables Used:
-  - <%CAT_ID%> : Category ID
-  - <%CAT_NAME%> : Category name
-  - <%CAT_DESC%> : Category description (if enabled)
-  - <%FORUM_ROWS%> : The forum rows within this category
--->
-
-<section class="forum-card mb-6" id="category-<%CAT_ID%>">
-  <!-- Category Header -->
-  <div class="forum-card-header">
-    <h2 class="text-lg font-semibold flex items-center gap-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-      </svg>
-      <%CAT_NAME%>
-    </h2>
+<div class="forum-card mb-6 category" id="cat-<!-- |cat_id| -->">
+  <div class="forum-card-header <!-- |collapsed_class| -->">
+    <div class="flex items-center justify-between">
+      <h2 class="text-lg font-semibold flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+        </svg>
+        <a href="index.php?c=<!-- |cat_id| -->" class="text-white hover:text-white/80"><!-- |cat_name| --></a>
+      </h2>
+      <a href="#" onclick='catcollapse("<!-- |cat_id| -->");return false;' id='main_<!-- |cat_id| -->' class="text-white/80 hover:text-white">
+        <!-- |collapse_img| -->
+      </a>
+    </div>
   </div>
-
-  <!-- Forum Rows Container -->
-  <div class="divide-y divide-forum-border">
-    <%FORUM_ROWS%>
+  <div id='cat_<!-- |cat_id| -->' style="<!-- |collapsed_style| -->">
+    <div class="divide-y divide-forum-border">
+      <% FORUM_ROWS %>
+    </div>
   </div>
-</section>
+</div>

@@ -1,85 +1,40 @@
-<!--
-  JCINK Forum Row Template
-
-  This template goes in: ACP > Skins & Templates > HTML Templates > Board Index Templates > Forum Row
-
-  JCINK Variables Used:
-  - <%FORUM_ID%> : Forum ID
-  - <%FORUM_NAME%> : Forum name
-  - <%FORUM_DESC%> : Forum description
-  - <%FORUM_LINK%> : Link to the forum
-  - <%FORUM_ICON%> : Forum status icon (new posts, no new posts, locked, etc.)
-  - <%TOPICS%> : Number of topics
-  - <%REPLIES%> : Number of replies
-  - <%LAST_POST%> : Last post information
-  - <%LAST_POSTER%> : Last poster's name
-  - <%LAST_POSTER_LINK%> : Link to last poster's profile
-  - <%LAST_POST_TIME%> : Time of last post
-  - <%LAST_TOPIC%> : Last topic title
-  - <%LAST_TOPIC_LINK%> : Link to last topic
-  - <%SUBFORUMS%> : List of subforums (if any)
-  - <%FORUM_MARKER%> : Read/unread marker
--->
-
-<div class="category-row group" id="forum-<%FORUM_ID%>">
-  <!-- Color Marker Bar -->
+<div class="category-row group <!-- |class_new_post| -->" id="forum-<!-- |forum_id| -->">
   <div class="category-marker bg-category-1"></div>
 
-  <!-- Forum Icon/Status -->
   <div class="category-icon">
-    <%FORUM_ICON%>
-    <!-- Alternative modern icons based on status -->
-    <!--
-    <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-400">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-      </svg>
-    </div>
-    -->
+    <!-- |img_new_post| -->
   </div>
 
-  <!-- Forum Info -->
   <div class="category-info">
-    <a href="<%FORUM_LINK%>" class="category-title">
-      <%FORUM_NAME%>
-    </a>
-    <p class="category-description">
-      <%FORUM_DESC%>
-    </p>
-
-    <!-- Subforums (if any) -->
-    <div class="mt-2 text-sm" id="subforums-<%FORUM_ID%>">
-      <%SUBFORUMS%>
-    </div>
+    <!-- |name| -->
+    <p class="category-description"><!-- |description| --></p>
+    <div class="mt-2 text-sm"><!-- |subforums| --></div>
+    <div class="text-xs text-forum-muted mt-1"><!-- |moderators| --></div>
   </div>
 
-  <!-- Statistics -->
   <div class="category-stats hidden lg:flex">
     <div class="text-center">
-      <div class="font-semibold text-forum-text"><%TOPICS%></div>
+      <div class="font-semibold text-forum-text"><!-- |topics| --></div>
       <div class="text-xs">Topics</div>
     </div>
     <div class="text-center">
-      <div class="font-semibold text-forum-text"><%REPLIES%></div>
+      <div class="font-semibold text-forum-text"><!-- |replies| --></div>
       <div class="text-xs">Posts</div>
     </div>
   </div>
 
-  <!-- Last Post Info -->
   <div class="category-last-post hidden md:block">
     <div class="flex items-center gap-3">
-      <!-- Last poster avatar placeholder -->
       <div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex-shrink-0 overflow-hidden">
-        <!-- Add avatar if available -->
+        <img src="<!-- |last_poster_avatar_url| -->" alt="" class="w-full h-full object-cover">
       </div>
       <div class="min-w-0 flex-1">
-        <a href="<%LAST_TOPIC_LINK%>" class="text-sm font-medium text-forum-text hover:text-forum-accent block truncate">
-          <%LAST_TOPIC%>
+        <a href="<!-- |last_topic_url| -->" class="text-sm font-medium text-forum-text hover:text-forum-accent block truncate">
+          <!-- |last_topic_text| -->
         </a>
-        <p class="text-xs text-forum-text-muted mt-0.5">
-          by <a href="<%LAST_POSTER_LINK%>" class="hover:text-forum-accent"><%LAST_POSTER%></a>
-          <span class="mx-1">&bull;</span>
-          <span><%LAST_POST_TIME%></span>
+        <p class="text-xs text-forum-muted mt-0.5">
+          by <!-- |last_poster| -->
+          <br><!-- |last_post| -->
         </p>
       </div>
     </div>

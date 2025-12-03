@@ -4,68 +4,68 @@
   This template goes in: ACP > Skins & Templates > HTML Templates > Member List Row
 
   JCINK Variables Used:
-  - <%MEMBER_ID%> : Member ID
-  - <%MEMBER_NAME%> : Member's display name
-  - <%MEMBER_LINK%> : Link to member profile
-  - <%MEMBER_AVATAR%> : Member's avatar
-  - <%MEMBER_GROUP%> : Member's group name
-  - <%MEMBER_GROUP_ID%> : Member's group ID
-  - <%MEMBER_POSTS%> : Member's post count
-  - <%MEMBER_JOINED%> : Join date
-  - <%MEMBER_LAST_ACTIVE%> : Last activity date
-  - <%MEMBER_EMAIL%> : Email link (if visible)
-  - <%MEMBER_PM%> : PM link
-  - <%MEMBER_WEBSITE%> : Website link
-  - <%ONLINE_STATUS%> : Online/Offline indicator
+  - <!-- |id| --> : Member ID
+  - <!-- |name| --> : Member's display name
+  - <!-- |name_css| --> : Member name with group styling
+  - <!-- |member_url| --> : Link to member profile
+  - <!-- |avatar| --> : Member's avatar
+  - <!-- |g_title| --> : Member's group name
+  - <!-- |posts| --> : Member's post count
+  - <!-- |joined| --> : Join date
+  - <!-- |last_active| --> : Last activity date
+  - <!-- |email| --> : Email link (if visible)
+  - <!-- |pm| --> : PM link
+  - <!-- |website| --> : Website link
+  - <!-- |online_status| --> : Online/Offline indicator
 -->
 
-<div class="member-row flex flex-col md:grid md:grid-cols-12 gap-2 md:gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors" id="member-<%MEMBER_ID%>">
+<div class="member-row flex flex-col md:grid md:grid-cols-12 gap-2 md:gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors" id="member-<!-- |id| -->">
   <!-- Member Info -->
   <div class="col-span-4 flex items-center gap-3">
     <!-- Avatar -->
     <div class="relative flex-shrink-0">
-      <a href="<%MEMBER_LINK%>">
-        <img src="<%MEMBER_AVATAR%>" alt="<%MEMBER_NAME%>" class="w-12 h-12 rounded-full object-cover border-2 border-forum-border">
+      <a href="<!-- |member_url| -->">
+        <img src="<!-- |avatar| -->" alt="" class="w-12 h-12 rounded-full object-cover border-2 border-forum-border">
       </a>
       <!-- Online Status -->
       <div class="absolute -bottom-0.5 -right-0.5">
-        <%ONLINE_STATUS%>
+        <!-- |online_status| -->
       </div>
     </div>
 
     <!-- Name & Contact -->
     <div class="min-w-0 flex-1">
-      <a href="<%MEMBER_LINK%>" class="font-semibold text-forum-text hover:text-forum-accent block truncate">
-        <%MEMBER_NAME%>
+      <a href="<!-- |member_url| -->" class="font-semibold text-forum-text hover:text-forum-accent block truncate">
+        <!-- |name_css| -->
       </a>
       <div class="flex items-center gap-2 mt-1">
-        <%MEMBER_PM%>
-        <%MEMBER_EMAIL%>
-        <%MEMBER_WEBSITE%>
+        <!-- |pm| -->
+        <!-- |email| -->
+        <!-- |website| -->
       </div>
     </div>
   </div>
 
   <!-- Group Badge -->
   <div class="col-span-2 flex items-center justify-start md:justify-center">
-    <span class="text-sm"><%MEMBER_GROUP%></span>
+    <span class="text-sm"><!-- |g_title| --></span>
   </div>
 
   <!-- Posts -->
   <div class="col-span-2 flex items-center justify-start md:justify-center">
     <span class="md:hidden text-forum-muted text-sm mr-2">Posts:</span>
-    <span class="font-medium text-forum-text"><%MEMBER_POSTS%></span>
+    <span class="font-medium text-forum-text"><!-- |posts| --></span>
   </div>
 
   <!-- Joined -->
   <div class="col-span-2 flex items-center justify-start md:justify-center text-sm text-forum-muted">
     <span class="md:hidden mr-2">Joined:</span>
-    <%MEMBER_JOINED%>
+    <!-- |joined| -->
   </div>
 
   <!-- Last Active -->
   <div class="col-span-2 flex items-center justify-start md:justify-center text-sm text-forum-muted">
     <span class="md:hidden mr-2">Active:</span>
-    <%MEMBER_LAST_ACTIVE%>
+    <!-- |last_active| -->
   </div>
 </div>
