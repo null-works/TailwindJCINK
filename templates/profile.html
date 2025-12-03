@@ -1,0 +1,224 @@
+<!--
+  JCINK Profile Template
+
+  This template goes in: ACP > Skins & Templates > HTML Templates > Profile Templates > Profile
+
+  JCINK Variables Used:
+  - <%MEMBER_NAME%> : Member's display name
+  - <%MEMBER_ID%> : Member ID
+  - <%MEMBER_AVATAR%> : Member's avatar
+  - <%MEMBER_PHOTO%> : Member's photo
+  - <%MEMBER_GROUP%> : Member's group
+  - <%MEMBER_TITLE%> : Custom title
+  - <%MEMBER_POSTS%> : Post count
+  - <%MEMBER_JOINED%> : Join date
+  - <%MEMBER_LAST_ACTIVE%> : Last activity
+  - <%MEMBER_REPUTATION%> : Reputation
+  - <%MEMBER_AGE%> : Age
+  - <%MEMBER_BIRTHDAY%> : Birthday
+  - <%MEMBER_LOCATION%> : Location
+  - <%MEMBER_GENDER%> : Gender
+  - <%MEMBER_WEBSITE%> : Website URL
+  - <%MEMBER_BIO%> : About me/bio
+  - <%MEMBER_SIGNATURE%> : Signature
+  - <%MEMBER_INTERESTS%> : Interests
+  - <%PM_LINK%> : Send PM link
+  - <%EMAIL_LINK%> : Send email link
+  - <%PROFILE_FIELDS%> : Custom profile fields
+  - <%CONTACT_INFO%> : Contact information
+  - <%RECENT_POSTS%> : Recent posts by member
+  - <%RECENT_TOPICS%> : Recent topics by member
+  - <%FRIENDS%> : Friends list
+  - <%VISITORS%> : Recent visitors
+  - <%COMMENTS%> : Profile comments
+  - <%WARN_LEVEL%> : Warning level
+  - <%ADMIN_OPTIONS%> : Admin options
+-->
+
+<div class="profile-wrapper">
+  <!-- Profile Header -->
+  <div class="forum-card mb-6">
+    <div class="relative">
+      <!-- Cover/Banner Area -->
+      <div class="h-32 md:h-48 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-t-forum"></div>
+
+      <!-- Profile Info Overlay -->
+      <div class="px-6 pb-6">
+        <div class="flex flex-col md:flex-row md:items-end gap-4 -mt-16 md:-mt-20">
+          <!-- Avatar -->
+          <div class="flex-shrink-0">
+            <img
+              src="<%MEMBER_AVATAR%>"
+              alt="<%MEMBER_NAME%>"
+              class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-slate-800 shadow-lg object-cover"
+            >
+          </div>
+
+          <!-- Name & Group -->
+          <div class="flex-1 md:pb-2">
+            <h1 class="text-2xl md:text-3xl font-bold text-forum-text">
+              <%MEMBER_NAME%>
+            </h1>
+            <div class="mt-1">
+              <%MEMBER_GROUP%>
+            </div>
+            <p class="text-forum-text-muted mt-1"><%MEMBER_TITLE%></p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-2 md:pb-2">
+            <a href="<%PM_LINK%>" class="btn btn-primary">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              Message
+            </a>
+            <%ADMIN_OPTIONS%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Content Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Left Sidebar -->
+    <div class="space-y-6">
+      <!-- Stats Card -->
+      <div class="forum-card">
+        <div class="forum-card-body">
+          <h3 class="font-semibold text-forum-text mb-4">Statistics</h3>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-forum-text-muted">Posts</span>
+              <span class="font-semibold text-forum-text"><%MEMBER_POSTS%></span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-forum-text-muted">Reputation</span>
+              <span class="font-semibold text-green-600"><%MEMBER_REPUTATION%></span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-forum-text-muted">Joined</span>
+              <span class="text-forum-text"><%MEMBER_JOINED%></span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-forum-text-muted">Last Active</span>
+              <span class="text-forum-text"><%MEMBER_LAST_ACTIVE%></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Info Card -->
+      <div class="forum-card">
+        <div class="forum-card-body">
+          <h3 class="font-semibold text-forum-text mb-4">Personal Information</h3>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 text-forum-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              <div>
+                <div class="text-forum-text-muted">Birthday</div>
+                <div class="text-forum-text"><%MEMBER_BIRTHDAY%></div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 text-forum-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <div>
+                <div class="text-forum-text-muted">Location</div>
+                <div class="text-forum-text"><%MEMBER_LOCATION%></div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 text-forum-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+              </svg>
+              <div>
+                <div class="text-forum-text-muted">Website</div>
+                <div class="text-forum-text">
+                  <a href="<%MEMBER_WEBSITE%>" target="_blank" rel="noopener" class="hover:text-forum-accent">
+                    <%MEMBER_WEBSITE%>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Profile Fields -->
+          <div class="mt-4 pt-4 border-t border-forum-border">
+            <%PROFILE_FIELDS%>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Card -->
+      <div class="forum-card">
+        <div class="forum-card-body">
+          <h3 class="font-semibold text-forum-text mb-4">Contact</h3>
+          <div class="flex flex-wrap gap-2">
+            <%CONTACT_INFO%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- About Me -->
+      <div class="forum-card">
+        <div class="forum-card-body">
+          <h3 class="font-semibold text-forum-text mb-4">About Me</h3>
+          <div class="text-forum-text leading-relaxed">
+            <%MEMBER_BIO%>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div class="forum-card">
+        <div class="forum-card-body">
+          <h3 class="font-semibold text-forum-text mb-4">Interests</h3>
+          <p class="text-forum-text"><%MEMBER_INTERESTS%></p>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="forum-card">
+        <div class="forum-card-body">
+          <h3 class="font-semibold text-forum-text mb-4">Recent Posts</h3>
+          <div class="divide-y divide-forum-border -mx-5">
+            <%RECENT_POSTS%>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signature -->
+      <div class="forum-card">
+        <div class="forum-card-body">
+          <h3 class="font-semibold text-forum-text mb-4">Signature</h3>
+          <div class="signature border-0 pt-0 mt-0">
+            <%MEMBER_SIGNATURE%>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Comments -->
+      <div class="forum-card">
+        <div class="forum-card-body">
+          <h3 class="font-semibold text-forum-text mb-4">Profile Comments</h3>
+          <div class="space-y-4">
+            <%COMMENTS%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

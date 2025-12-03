@@ -1,0 +1,23 @@
+{
+  "name": "tailwind-jcink-theme",
+  "version": "1.0.0",
+  "description": "A modern JCINK forum theme built with Tailwind CSS",
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/css/main.css -o ./dist/theme.css",
+    "build:min": "npx tailwindcss -i ./src/css/main.css -o ./dist/theme.min.css --minify",
+    "watch": "npx tailwindcss -i ./src/css/main.css -o ./dist/theme.css --watch",
+    "dev": "npm run watch"
+  },
+  "keywords": [
+    "jcink",
+    "forum",
+    "theme",
+    "tailwindcss",
+    "template"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

@@ -1,0 +1,101 @@
+<!--
+  JCINK Topic View Wrapper Template
+
+  This template goes in: ACP > Skins & Templates > HTML Templates > Topic View Templates > Topic View Wrapper
+
+  JCINK Variables Used:
+  - <%TOPIC_TITLE%> : Topic title
+  - <%TOPIC_DESC%> : Topic description
+  - <%TOPIC_STARTER%> : Who started the topic
+  - <%POSTS%> : All post rows
+  - <%PAGINATION%> : Page navigation
+  - <%REPLY_BUTTON%> : Button to reply
+  - <%QUICK_REPLY%> : Quick reply form
+  - <%TOPIC_OPTIONS%> : Topic moderation options
+  - <%FORUM_LINK%> : Link back to forum
+  - <%FORUM_NAME%> : Forum name
+  - <%MULTI_QUOTE_BTN%> : Multi-quote button
+  - <%POLL%> : Poll display (if topic has poll)
+  - <%SHARE_LINKS%> : Social sharing links
+-->
+
+<div class="topic-view-wrapper">
+  <!-- Topic Header -->
+  <div class="forum-card mb-4">
+    <div class="forum-card-header">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h1 class="text-xl font-bold"><%TOPIC_TITLE%></h1>
+          <p class="text-white/80 text-sm mt-1"><%TOPIC_DESC%></p>
+        </div>
+        <div class="flex items-center gap-2">
+          <%REPLY_BUTTON%>
+          <!--
+          <a href="#quick-reply" class="btn btn-primary">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+            </svg>
+            Reply
+          </a>
+          -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumb & Meta -->
+    <div class="px-5 py-3 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between flex-wrap gap-4">
+      <nav class="breadcrumbs">
+        <a href="<%FORUM_LINK%>"><%FORUM_NAME%></a>
+        <span class="breadcrumbs-separator">/</span>
+        <span class="text-forum-text"><%TOPIC_TITLE%></span>
+      </nav>
+
+      <!-- Pagination (Top) -->
+      <nav class="pagination">
+        <%PAGINATION%>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Poll (if exists) -->
+  <div class="forum-card mb-4" id="topic-poll">
+    <%POLL%>
+  </div>
+
+  <!-- Posts Container -->
+  <div class="forum-card mb-4">
+    <div class="divide-y divide-forum-border">
+      <%POSTS%>
+    </div>
+
+    <!-- Bottom Actions Bar -->
+    <div class="forum-card-footer flex items-center justify-between flex-wrap gap-4">
+      <div class="flex items-center gap-2">
+        <%MULTI_QUOTE_BTN%>
+        <%TOPIC_OPTIONS%>
+      </div>
+
+      <!-- Pagination (Bottom) -->
+      <nav class="pagination">
+        <%PAGINATION%>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Share Links -->
+  <div class="flex items-center justify-end gap-2 mb-4 text-sm text-forum-text-muted">
+    <span>Share:</span>
+    <%SHARE_LINKS%>
+  </div>
+
+  <!-- Quick Reply -->
+  <div class="quick-reply" id="quick-reply">
+    <h3 class="quick-reply-header">
+      <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+      </svg>
+      Quick Reply
+    </h3>
+    <%QUICK_REPLY%>
+  </div>
+</div>

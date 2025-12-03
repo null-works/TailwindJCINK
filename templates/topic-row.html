@@ -1,0 +1,122 @@
+<!--
+  JCINK Topic Row Template
+
+  This template goes in: ACP > Skins & Templates > HTML Templates > Topic List Templates > Topic Row
+
+  JCINK Variables Used:
+  - <%TOPIC_ID%> : Topic ID
+  - <%TOPIC_TITLE%> : Topic title
+  - <%TOPIC_LINK%> : Link to the topic
+  - <%TOPIC_ICON%> : Topic status icon
+  - <%TOPIC_STARTER%> : Topic author
+  - <%TOPIC_STARTER_LINK%> : Link to author's profile
+  - <%TOPIC_START_TIME%> : When topic was created
+  - <%REPLIES%> : Number of replies
+  - <%VIEWS%> : Number of views
+  - <%LAST_POSTER%> : Last poster's name
+  - <%LAST_POSTER_LINK%> : Link to last poster's profile
+  - <%LAST_POST_TIME%> : Time of last post
+  - <%LAST_POST_LINK%> : Link to last post
+  - <%TOPIC_PAGES%> : Topic page links (if multi-page)
+  - <%TOPIC_PREFIX%> : Topic prefix/tag
+  - <%TOPIC_DESCRIPTION%> : Topic description (if set)
+  - <%PINNED%> : Pinned topic indicator
+  - <%LOCKED%> : Locked topic indicator
+  - <%HOT%> : Hot topic indicator
+  - <%POLL%> : Poll indicator
+-->
+
+<div class="topic-row" id="topic-<%TOPIC_ID%>">
+  <!-- Topic Status Icon -->
+  <div class="topic-status">
+    <%TOPIC_ICON%>
+    <!--
+    Modern icon alternatives:
+    - Unread: bg-primary-100 text-primary-600
+    - Read: bg-slate-100 text-slate-400
+    - Hot: bg-red-100 text-red-600
+    - Pinned: bg-amber-100 text-amber-600
+    - Locked: bg-slate-200 text-slate-500
+
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    </svg>
+    -->
+  </div>
+
+  <!-- Topic Info -->
+  <div class="topic-info">
+    <div class="flex items-center gap-2 flex-wrap">
+      <!-- Topic Prefix/Tag -->
+      <span class="topic-prefix">
+        <%TOPIC_PREFIX%>
+        <!-- <span class="tag tag-primary">Announcement</span> -->
+      </span>
+
+      <!-- Pinned/Locked/Hot/Poll Indicators -->
+      <span class="inline-flex items-center gap-1">
+        <%PINNED%>
+        <%LOCKED%>
+        <%HOT%>
+        <%POLL%>
+        <!--
+        <span class="tag" title="Pinned">
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z"/>
+          </svg>
+        </span>
+        <span class="tag" title="Locked">
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+          </svg>
+        </span>
+        -->
+      </span>
+
+      <!-- Topic Title -->
+      <a href="<%TOPIC_LINK%>" class="topic-title">
+        <%TOPIC_TITLE%>
+      </a>
+
+      <!-- Page Numbers (if multi-page) -->
+      <span class="text-xs text-forum-text-muted">
+        <%TOPIC_PAGES%>
+      </span>
+    </div>
+
+    <!-- Topic Description -->
+    <p class="text-sm text-forum-text-muted mt-0.5 line-clamp-1">
+      <%TOPIC_DESCRIPTION%>
+    </p>
+
+    <!-- Topic Meta -->
+    <div class="topic-meta">
+      <span>Started by</span>
+      <a href="<%TOPIC_STARTER_LINK%>" class="hover:text-forum-accent font-medium"><%TOPIC_STARTER%></a>
+      <span class="text-forum-border">&bull;</span>
+      <span><%TOPIC_START_TIME%></span>
+    </div>
+  </div>
+
+  <!-- Topic Stats -->
+  <div class="topic-stats hidden lg:flex">
+    <div class="text-center">
+      <div class="font-semibold text-forum-text"><%REPLIES%></div>
+      <div class="text-xs">Replies</div>
+    </div>
+    <div class="text-center">
+      <div class="font-semibold text-forum-text"><%VIEWS%></div>
+      <div class="text-xs">Views</div>
+    </div>
+  </div>
+
+  <!-- Last Post -->
+  <div class="topic-last-post hidden md:block">
+    <a href="<%LAST_POST_LINK%>" class="font-medium text-forum-text hover:text-forum-accent">
+      <%LAST_POSTER%>
+    </a>
+    <p class="text-xs text-forum-text-muted mt-0.5">
+      <%LAST_POST_TIME%>
+    </p>
+  </div>
+</div>
