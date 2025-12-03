@@ -64,15 +64,16 @@ The stylesheet provides all component classes and is loaded via the `<% CSS %>` 
 
 **Option A: Import via XML file (Easiest)**
 
-Use the provided XML file to import all templates at once:
+Use the provided XML file to import the complete skin including all templates:
 
-1. Under **"OR Choose a skin XML file to extract the templates from"**, click **Browse**
-2. Select `templates/tailwindjcink-skin.xml` from this repo
-3. Fill in the form:
-   - **Name for new template set...**: Enter a name (e.g., "TailwindJCINK")
-   - **Allocate this template set to skin...**: Select the skin you created in Step 1 (or your default skin)
-4. Click **Create a new HTML Template Set**
-5. All templates will be imported automatically - **skip to Step 9!**
+1. Go to **Skins & Templates** → **Manage Skin Sets**
+2. At the bottom, find **"Import a complete skin set"**
+3. Click **Browse** and select `templates/tailwindjcink-skin.xml`
+4. Click **Import Skin Set**
+5. The skin will be created with CSS, Board Wrapper, and all HTML templates
+6. **Skip to Step 6!**
+
+> **Note:** If HTML templates don't import (known issue on some older JCINK boards), use Option B or C below to install them manually.
 
 **Option B: Manual setup for brand new boards**
 
@@ -143,7 +144,7 @@ Install each template by clicking on its name, deleting existing code, pasting t
 
 | Template File | JCINK Template Name |
 |---------------|---------------------|
-| `tailwindjcink-skin.xml` | Manage Skin Sets → Import (CSS + Wrapper only) |
+| `tailwindjcink-skin.xml` | Manage Skin Sets → Import (Complete skin with all templates) |
 | `stylesheet.css` | Manage Skin Sets → Stylesheet |
 | `board-wrapper.html` | Manage Skin Sets → Board Wrapper |
 | `board-stats.html` | Board Stats |
