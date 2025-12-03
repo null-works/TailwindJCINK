@@ -96,7 +96,7 @@ If you see "There are currently no existing Custom HTML Template sets", you need
 ### Step 5: Install Category & Forum Templates
 
 1. Expand **Board Index Templates**
-2. Click **Category Row**
+2. Click **Category List Header**
    - Delete existing code
    - Paste contents of `templates/category-row.html`
    - Click **Update**
@@ -108,7 +108,11 @@ If you see "There are currently no existing Custom HTML Template sets", you need
 ### Step 6: Install Topic List Templates
 
 1. Expand **Topic List Templates**
-2. Click **Topic Row**
+2. Click **Topic List Header**
+   - Delete existing code
+   - Paste contents of `templates/topic-list.html`
+   - Click **Update**
+3. Click **Topic Row**
    - Delete existing code
    - Paste contents of `templates/topic-row.html`
    - Click **Update**
@@ -116,19 +120,19 @@ If you see "There are currently no existing Custom HTML Template sets", you need
 ### Step 7: Install Topic View Templates
 
 1. Expand **Topic View Templates**
-2. Click **Post Row** (this is the post display)
+2. Click **Post Row**
    - Delete existing code
    - Paste contents of `templates/post-display.html`
    - Click **Update**
-3. Click **Mini Profile**
+
+### Step 8: Install Profile Templates
+
+1. Expand **Profile Templates**
+2. Click **Mini Profile**
    - Delete existing code
    - Paste contents of `templates/mini-profile.html`
    - Click **Update**
-
-### Step 8: Install Profile Template
-
-1. Expand **Profile Templates**
-2. Click **Profile**
+3. Click **Main Profile**
    - Delete existing code
    - Paste contents of `templates/profile.html`
    - Click **Update**
@@ -143,17 +147,16 @@ If you see "There are currently no existing Custom HTML Template sets", you need
 
 | Template File | JCINK Location |
 |---------------|----------------|
-| `tailwindjcink-skin.xml` | HTML Templates → Import via "Choose a skin XML file" |
+| `tailwindjcink-skin.xml` | Manage Skin Sets → Import (Stylesheet + Board Wrapper only) |
 | `stylesheet.css` | Skins & Templates → Manage Skin Sets → Stylesheet |
 | `board-wrapper.html` | Skins & Templates → Manage Skin Sets → Board Wrapper |
-| `category-row.html` | HTML Templates → Board Index Templates → Category Row |
+| `category-row.html` | HTML Templates → Board Index Templates → Category List Header |
 | `forum-row.html` | HTML Templates → Board Index Templates → Forum Row |
-| `topic-list.html` | HTML Templates → Topic List Templates → Topic List Wrapper |
+| `topic-list.html` | HTML Templates → Topic List Templates → Topic List Header |
 | `topic-row.html` | HTML Templates → Topic List Templates → Topic Row |
-| `topic-view.html` | HTML Templates → Topic View Templates → Topic View Wrapper |
 | `post-display.html` | HTML Templates → Topic View Templates → Post Row |
-| `mini-profile.html` | HTML Templates → Topic View Templates → Mini Profile |
-| `profile.html` | HTML Templates → Profile Templates → Profile |
+| `mini-profile.html` | HTML Templates → Profile Templates → Mini Profile |
+| `profile.html` | HTML Templates → Profile Templates → Main Profile |
 
 ---
 
