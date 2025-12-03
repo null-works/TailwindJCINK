@@ -1,187 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  TailwindJCINK Skin Import File
-
-  HOW TO IMPORT:
-  1. Go to Admin CP > Skins & Templates > Manage Skin Sets
-  2. Scroll down to "Import a Skin Set"
-  3. Click "Browse" and select this file
-  4. Click "Import"
-  5. The new skin will appear in your skin list
-
-  This file contains:
-  - Stylesheet (CSS)
-  - Board Wrapper (HTML)
-  - All HTML Templates with CORRECT JCINK variable syntax
--->
 <skin>
-  <skinname>TailwindJCINK</skinname>
-  <date>December 2024</date>
-
-  <stylesheet><![CDATA[/*
- * TailwindJCINK Theme Stylesheet
- */
-
-:root {
-  --forum-bg: #f1f5f9;
-  --forum-surface: #ffffff;
-  --forum-border: #e2e8f0;
-  --forum-text: #1e293b;
-  --forum-muted: #64748b;
-  --forum-accent: #0ea5e9;
-  --forum-accent-hover: #0284c7;
-  --category-1: #ef4444;
-  --category-2: #f97316;
-  --category-3: #eab308;
-  --category-4: #22c55e;
-  --category-5: #06b6d4;
-  --category-6: #8b5cf6;
-}
-
-.dark {
-  --forum-bg: #0f172a;
-  --forum-surface: #1e293b;
-  --forum-border: #334155;
-  --forum-text: #f1f5f9;
-  --forum-muted: #94a3b8;
-  --forum-accent: #38bdf8;
-  --forum-accent-hover: #7dd3fc;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--forum-text);
-  background-color: var(--forum-bg);
-}
-
-a { color: var(--forum-accent); text-decoration: none; transition: color 0.2s ease; }
-a:hover { color: var(--forum-accent-hover); }
-
-input[type="text"], input[type="email"], input[type="password"], input[type="search"], textarea, select {
-  background-color: var(--forum-surface);
-  border: 1px solid var(--forum-border);
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  font-size: 14px;
-  color: var(--forum-text);
-}
-
-#wrapper { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-#innerwrapper { padding: 1rem 0; }
-
-.forum-card {
-  background-color: var(--forum-surface);
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--forum-border);
-  overflow: hidden;
-}
-
-.forum-card-header {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--forum-border);
-  background: linear-gradient(to right, #0ea5e9, #0284c7);
-  color: #ffffff;
-}
-
-.forum-card-body { padding: 1rem 1.25rem; }
-.forum-card-footer { padding: 0.75rem 1.25rem; border-top: 1px solid var(--forum-border); background-color: #f8fafc; }
-.dark .forum-card-footer { background-color: rgba(30, 41, 59, 0.5); }
-
-.category-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--forum-border); transition: background-color 0.2s; }
-.category-row:last-child { border-bottom: none; }
-.category-row:hover { background-color: #f8fafc; }
-.dark .category-row:hover { background-color: rgba(30, 41, 59, 0.3); }
-
-.category-marker { width: 4px; flex-shrink: 0; }
-.category-icon { width: 4rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--forum-muted); }
-.category-info { flex: 1; padding: 1rem; }
-.category-title { font-size: 1.125rem; font-weight: 600; color: var(--forum-text); transition: color 0.2s; }
-.category-title:hover { color: var(--forum-accent); }
-.category-description { font-size: 0.875rem; color: var(--forum-muted); margin-top: 0.25rem; }
-.category-stats { display: flex; align-items: center; gap: 1.5rem; padding: 1rem; font-size: 0.875rem; color: var(--forum-muted); border-left: 1px solid var(--forum-border); min-width: 200px; }
-.category-last-post { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; min-width: 280px; border-left: 1px solid var(--forum-border); }
-
-.bg-category-1 { background-color: var(--category-1); }
-.bg-category-2 { background-color: var(--category-2); }
-.bg-category-3 { background-color: var(--category-3); }
-.bg-category-4 { background-color: var(--category-4); }
-.bg-category-5 { background-color: var(--category-5); }
-.bg-category-6 { background-color: var(--category-6); }
-
-.topic-row { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--forum-border); transition: background-color 0.2s; }
-.topic-row:last-child { border-bottom: none; }
-.topic-row:hover { background-color: #f8fafc; }
-.dark .topic-row:hover { background-color: rgba(30, 41, 59, 0.3); }
-
-.topic-status { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #f1f5f9; color: var(--forum-muted); }
-.dark .topic-status { background-color: #334155; }
-.topic-info { flex: 1; min-width: 0; }
-.topic-title { font-weight: 500; color: var(--forum-text); transition: color 0.2s; }
-.topic-title:hover { color: var(--forum-accent); }
-.topic-meta { font-size: 0.875rem; color: var(--forum-muted); margin-top: 0.25rem; display: flex; align-items: center; gap: 0.5rem; }
-.topic-prefix { font-size: 0.75rem; }
-.topic-stats { display: flex; align-items: center; gap: 1rem; font-size: 0.875rem; color: var(--forum-muted); min-width: 120px; justify-content: center; }
-.topic-last-post { font-size: 0.875rem; text-align: right; min-width: 180px; }
-
-.post { display: flex; gap: 1.25rem; padding: 1.25rem; border-bottom: 1px solid var(--forum-border); background-color: var(--forum-surface); }
-.post:last-child { border-bottom: none; }
-.post:nth-child(odd) { background-color: rgba(248, 250, 252, 0.5); }
-.dark .post:nth-child(odd) { background-color: rgba(30, 41, 59, 0.2); }
-.post-sidebar { width: 180px; flex-shrink: 0; text-align: center; }
-.post-content { flex: 1; min-width: 0; }
-.post-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--forum-border); }
-.post-body { color: var(--forum-text); line-height: 1.7; }
-.post-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--forum-border); font-size: 0.875rem; color: var(--forum-muted); }
-.post-actions { display: flex; align-items: center; gap: 0.5rem; }
-
-.mini-profile { text-align: center; }
-.mini-profile-avatar { width: 7rem; height: 7rem; margin: 0 auto 0.75rem; border-radius: 50%; border: 4px solid var(--forum-border); object-fit: cover; }
-.mini-profile-name { font-weight: 600; color: var(--forum-text); }
-.mini-profile-stats { font-size: 0.75rem; color: var(--forum-muted); margin-top: 0.5rem; }
-.mini-profile-stats > div { margin-top: 0.25rem; }
-.mini-profile-icons { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.75rem; }
-
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; transition: all 0.2s; cursor: pointer; border: none; }
-.btn-primary { background-color: #0284c7; color: #ffffff; }
-.btn-primary:hover { background-color: #0369a1; }
-.btn-ghost { background-color: transparent; color: var(--forum-muted); }
-.btn-ghost:hover { background-color: #f1f5f9; color: var(--forum-text); }
-.btn-sm { padding: 0.375rem 0.75rem; font-size: 0.75rem; }
-
-.signature { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--forum-border); font-size: 0.875rem; color: var(--forum-muted); }
-.signature img { max-height: 200px; }
-
-.pagination { display: flex; align-items: center; justify-content: center; gap: 0.25rem; }
-.pagination a, .pagination span { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; color: var(--forum-muted); }
-.pagination .active { background-color: #0284c7; color: #ffffff; }
-
-.text-forum-text { color: var(--forum-text); }
-.text-forum-muted { color: var(--forum-muted); }
-.text-forum-accent { color: var(--forum-accent); }
-.border-forum-border { border-color: var(--forum-border); }
-
-.row1, .row2, .row3, .row4 { background-color: var(--forum-surface) !important; padding: 0.75rem !important; }
-.maintitle { background: linear-gradient(to right, #0ea5e9, #0284c7) !important; color: #ffffff !important; padding: 0.75rem 1rem !important; border-radius: 0.5rem 0.5rem 0 0 !important; }
-
-@media (max-width: 768px) {
-  .category-stats, .category-last-post { display: none; }
-  .topic-stats, .topic-last-post { display: none; }
-  .post-sidebar { display: none; }
-  .post { flex-direction: column; }
-}]]></stylesheet>
-
-  <wrappers><![CDATA[<!DOCTYPE html>
+ <templates>
+  <item name='memberlist_row'></item>
+  <item name='cat_head'></item>
+  <item name='mini_profile'></item>
+  <item name='profile'></item>
+  <item name='memberlist_head'></item>
+  <item name='subf_head'></item>
+  <item name='topic_list_head'></item>
+  <item name='redirect_row'></item>
+  <item name='forum_row'></item>
+  <item name='post_row'></item>
+  <item name='board_stats'></item>
+  <item name='topic_row'></item>
+ </templates>
+ <macros>
+ </macros>
+ <wrapper><![CDATA[<!DOCTYPE html>
 <html>
 <head>
 <title><% TITLE %></title>
 <% CSS %>
-<script src="https://files.jcink.net/html/jquery-3.7.1.min.js"></script>
-<script src="https://files.jcink.net/html/catcollapse.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -189,393 +28,62 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        primary: {"50":"#f0f9ff","100":"#e0f2fe","200":"#bae6fd","300":"#7dd3fc","400":"#38bdf8","500":"#0ea5e9","600":"#0284c7","700":"#0369a1","800":"#075985","900":"#0c4a6e"},
         forum: {
-          bg: 'var(--forum-bg, #f1f5f9)',
-          surface: 'var(--forum-surface, #ffffff)',
-          border: 'var(--forum-border, #e2e8f0)',
-          text: 'var(--forum-text, #1e293b)',
-          muted: 'var(--forum-muted, #64748b)',
-          accent: 'var(--forum-accent, #0ea5e9)',
+          bg: 'var(--forum-bg)',
+          surface: 'var(--forum-surface)',
+          border: 'var(--forum-border)',
+          text: 'var(--forum-text)',
+          muted: 'var(--forum-muted)',
+          accent: 'var(--forum-accent)',
         }
       },
-      maxWidth: { 'forum': '1200px' }
+      maxWidth: {
+        'forum': '1200px',
+      }
     }
   }
 }
 </script>
 </head>
 <body class="bg-forum-bg text-forum-text">
-<div id="wrapper" class="max-w-forum mx-auto px-4">
-  <div id="logo" class="py-4"><a href="index.php"><!-- |board_name| --></a></div>
+<div id="wrapper" class="max-w-forum mx-auto px-4 py-4">
   <% BOARD HEADER %>
-  <div id="innerwrapper">
-    <div id="navi" class="mb-4"><% NAVIGATION %></div>
-    <% DSHOUTBOX %>
-    <% BOARD %>
-    <div id="skin_selector" class="my-4"><% SKIN_SELECTOR %></div>
-    <% COPYRIGHT %>
+  <div id="navigation" class="mb-4">
+    <% NAVIGATION %>
   </div>
+  <% DSHOUTBOX %>
+  <% BOARD %>
+  <div id="skin_selector" class="my-4">
+    <% SKIN_SELECTOR %>
+  </div>
+  <% COPYRIGHT %>
 </div>
 </body>
-</html>]]></wrappers>
+</html>]]></wrapper>
+ <css><![CDATA[/*
+  TailwindJCINK - Minimal Base Stylesheet
 
-  <macros></macros>
+  This is intentionally minimal. Tailwind CSS handles most styling via the CDN.
+  Add custom CSS here only for JCINK-specific overrides.
+*/
 
-  <templates>
-    <item name='board_stats'><![CDATA[<div class="forum-card mt-6">
-  <div class="forum-card-header">
-    <h3 class="text-lg font-semibold flex items-center gap-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-      </svg>
-      Board Statistics
-    </h3>
-  </div>
-  <div class="forum-card-body">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-      <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
-        <div class="text-2xl font-bold text-forum-accent"><!-- |total_posts| --></div>
-        <div class="text-sm text-forum-muted">Total Posts</div>
-      </div>
-      <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
-        <div class="text-2xl font-bold text-forum-accent"><!-- |total_mem_reg| --></div>
-        <div class="text-sm text-forum-muted">Total Members</div>
-      </div>
-      <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
-        <div class="text-2xl font-bold text-forum-accent"><!-- |most_online| --></div>
-        <div class="text-sm text-forum-muted">Most Online</div>
-      </div>
-      <div class="text-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
-        <div class="text-2xl font-bold text-forum-accent"><!-- |total_users| --></div>
-        <div class="text-sm text-forum-muted">Online Now</div>
-      </div>
-    </div>
-    <div class="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg mb-4">
-      <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
-      </svg>
-      <span class="text-sm"><span class="text-forum-muted">Newest Member:</span> <!-- |newest_member| --></span>
-    </div>
-    <div class="mb-4">
-      <div class="flex items-center gap-2 mb-2">
-        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
-        <span class="font-medium text-forum-text"><!-- |total_users| --> Users Online</span>
-        <span class="text-forum-muted text-sm">(<!-- |total_mems| --> Members, <!-- |total_guests| --> Guests)</span>
-      </div>
-      <div class="text-sm text-forum-muted pl-6"><!-- |online_list| --></div>
-      <div class="text-xs text-forum-muted mt-2 pl-6"><!-- |online_legend| --></div>
-    </div>
-    <div class="text-xs text-forum-muted">Most users ever online: <span class="font-medium"><!-- |most_online| --></span> on <!-- |most_online_date| --></div>
-    <div class="mt-4 pt-4 border-t border-forum-border">
-      <div class="flex items-center gap-2 text-sm">
-        <svg class="w-4 h-4 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"/>
-        </svg>
-        <span class="text-forum-muted">Birthdays:</span>
-        <span><!-- |birthdays_list| --></span>
-      </div>
-    </div>
-    <div class="mt-2">
-      <div class="flex items-center gap-2 text-sm">
-        <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-        </svg>
-        <span class="text-forum-muted">Upcoming Events:</span>
-        <span><!-- |events| --></span>
-      </div>
-    </div>
-    <div class="mt-4 pt-4 border-t border-forum-border"><!-- |quick_login| --></div>
-  </div>
-</div>]]></item>
+/* CSS Variables for theme colors */
+:root {
+  --forum-bg: #f1f5f9;
+  --forum-surface: #ffffff;
+  --forum-border: #e2e8f0;
+  --forum-text: #1e293b;
+  --forum-muted: #64748b;
+  --forum-accent: #0ea5e9;
+}
 
-    <item name='cat_head'><![CDATA[<div class="forum-card mb-6 category" id="cat-<!-- |cat_id| -->">
-  <div class="forum-card-header <!-- |collapsed_class| -->">
-    <div class="flex items-center justify-between">
-      <h2 class="text-lg font-semibold flex items-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-        </svg>
-        <a href="index.php?c=<!-- |cat_id| -->" class="text-white hover:text-white/80"><!-- |cat_name| --></a>
-      </h2>
-      <a href="#" onclick='catcollapse("<!-- |cat_id| -->");return false;' id='main_<!-- |cat_id| -->' class="text-white/80 hover:text-white"><!-- |collapse_img| --></a>
-    </div>
-  </div>
-  <div id='cat_<!-- |cat_id| -->' style="<!-- |collapsed_style| -->">
-    <div class="divide-y divide-forum-border"><% FORUM_ROWS %></div>
-  </div>
-</div>]]></item>
-
-    <item name='forum_row'><![CDATA[<div class="category-row group <!-- |class_new_post| -->" id="forum-<!-- |forum_id| -->">
-  <div class="category-marker bg-category-1"></div>
-  <div class="category-icon"><!-- |img_new_post| --></div>
-  <div class="category-info">
-    <!-- |name| -->
-    <p class="category-description"><!-- |description| --></p>
-    <div class="mt-2 text-sm"><!-- |subforums| --></div>
-    <div class="text-xs text-forum-muted mt-1"><!-- |moderators| --></div>
-  </div>
-  <div class="category-stats hidden lg:flex">
-    <div class="text-center">
-      <div class="font-semibold text-forum-text"><!-- |topics| --></div>
-      <div class="text-xs">Topics</div>
-    </div>
-    <div class="text-center">
-      <div class="font-semibold text-forum-text"><!-- |replies| --></div>
-      <div class="text-xs">Posts</div>
-    </div>
-  </div>
-  <div class="category-last-post hidden md:block">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex-shrink-0 overflow-hidden"></div>
-      <div class="min-w-0 flex-1">
-        <div class="text-sm font-medium text-forum-text"><!-- |last_topic_text| --></div>
-        <p class="text-xs text-forum-muted mt-0.5">by <!-- |last_poster| --><br><!-- |last_post| --></p>
-      </div>
-    </div>
-  </div>
-</div>]]></item>
-
-    <item name='memberlist_head'><![CDATA[<div class="member-list-wrapper">
-  <div class="forum-card mb-4">
-    <div class="forum-card-header">
-      <div class="flex items-center justify-between">
-        <h1 class="text-xl font-bold flex items-center gap-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-          </svg>
-          Member List
-        </h1>
-        <span class="text-white/80 text-sm"><!-- |total_members| --> Members</span>
-      </div>
-    </div>
-  </div>
-  <div class="forum-card mb-4">
-    <div class="forum-card-body">
-      <div class="flex-1"><!-- |search_form| --></div>
-      <div class="mt-4 pt-4 border-t border-forum-border">
-        <div class="flex flex-wrap gap-1 justify-center"><!-- |letter_links| --></div>
-      </div>
-    </div>
-  </div>
-  <div class="forum-card">
-    <div class="hidden md:grid grid-cols-12 gap-4 px-5 py-3 bg-slate-50 dark:bg-slate-800/50 border-b border-forum-border text-sm font-medium text-forum-muted">
-      <div class="col-span-4">Member</div>
-      <div class="col-span-2 text-center">Group</div>
-      <div class="col-span-2 text-center">Posts</div>
-      <div class="col-span-2 text-center">Joined</div>
-      <div class="col-span-2 text-center">Last Active</div>
-    </div>
-    <div class="divide-y divide-forum-border"><% MEMBER_ROWS %></div>
-    <div class="forum-card-footer flex items-center justify-center">
-      <nav class="pagination"><!-- |pages| --></nav>
-    </div>
-  </div>
-</div>]]></item>
-
-    <item name='memberlist_row'><![CDATA[<div class="member-row flex flex-col md:grid md:grid-cols-12 gap-2 md:gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors" id="member-<!-- |id| -->">
-  <div class="col-span-4 flex items-center gap-3">
-    <div class="relative flex-shrink-0">
-      <a href="<!-- |member_url| -->"><img src="<!-- |avatar| -->" alt="" class="w-12 h-12 rounded-full object-cover border-2 border-forum-border"></a>
-      <div class="absolute -bottom-0.5 -right-0.5"><!-- |online_status| --></div>
-    </div>
-    <div class="min-w-0 flex-1">
-      <a href="<!-- |member_url| -->" class="font-semibold text-forum-text hover:text-forum-accent block truncate"><!-- |name_css| --></a>
-      <div class="flex items-center gap-2 mt-1"><!-- |pm| --> <!-- |email| --> <!-- |website| --></div>
-    </div>
-  </div>
-  <div class="col-span-2 flex items-center justify-start md:justify-center"><span class="text-sm"><!-- |g_title| --></span></div>
-  <div class="col-span-2 flex items-center justify-start md:justify-center"><span class="font-medium text-forum-text"><!-- |posts| --></span></div>
-  <div class="col-span-2 flex items-center justify-start md:justify-center text-sm text-forum-muted"><!-- |joined| --></div>
-  <div class="col-span-2 flex items-center justify-start md:justify-center text-sm text-forum-muted"><!-- |last_active| --></div>
-</div>]]></item>
-
-    <item name='mini_profile'><![CDATA[<div class="mini-profile" id="mini-profile-<!-- |id| -->">
-  <div class="relative inline-block">
-    <a href="<!-- |member_url| -->"><img src="<!-- |avatar| -->" alt="" class="mini-profile-avatar" loading="lazy"></a>
-    <div class="absolute bottom-1 right-1"><!-- |online_status| --></div>
-  </div>
-  <div class="mt-3"><a href="<!-- |member_url| -->" class="mini-profile-name hover:text-forum-accent transition-colors"><!-- |name_css| --></a></div>
-  <div class="mt-1"><!-- |g_title| --></div>
-  <div class="text-xs text-forum-muted italic mt-1"><!-- |member_title| --></div>
-  <div class="mt-2 text-amber-500"><!-- |pips| --></div>
-  <div class="mini-profile-stats">
-    <div class="flex items-center justify-center gap-1"><span><!-- |posts| --> posts</span></div>
-    <div class="flex items-center justify-center gap-1"><span>Joined <!-- |joined| --></span></div>
-    <div class="flex items-center justify-center gap-1"><span><!-- |location| --></span></div>
-  </div>
-  <div class="mt-2"><!-- |warn_level| --></div>
-  <div class="mt-2 text-xs"><!-- |custom_fields| --></div>
-  <div class="mini-profile-icons"><!-- |contact_info| --></div>
-</div>]]></item>
-
-    <item name='post_row'><![CDATA[<article class="post" id="entry<!-- |pid| -->">
-  <aside class="post-sidebar hidden md:block"><!-- |mini_profile| --></aside>
-  <div class="post-content">
-    <header class="post-header">
-      <div class="text-sm text-forum-muted">
-        <a href="#entry<!-- |pid| -->" class="hover:text-forum-accent"><time><!-- |post_date| --></time></a>
-        <span class="mx-2">&bull;</span>
-        <a href="#entry<!-- |pid| -->" class="hover:text-forum-accent"><!-- |post_id| --></a>
-      </div>
-      <div class="flex items-center gap-1"><!-- |checkbox| --></div>
-    </header>
-    <div class="post-body"><!-- |post| --></div>
-    <div class="text-xs text-forum-muted mt-3 italic"><!-- |edited_by| --></div>
-    <div class="signature"><!-- |signature| --></div>
-    <footer class="post-footer">
-      <div class="text-xs text-forum-muted"><!-- |ip_address| --></div>
-      <div class="post-actions">
-        <span><!-- |report_link| --></span>
-        <span><!-- |quote_button| --></span>
-        <span><!-- |edit_button| --></span>
-        <span><!-- |delete_button| --></span>
-      </div>
-    </footer>
-  </div>
-</article>]]></item>
-
-    <item name='profile'><![CDATA[<div class="profile-wrapper">
-  <div class="forum-card mb-6">
-    <div class="relative">
-      <div class="h-32 md:h-48 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-t-forum"></div>
-      <div class="px-6 pb-6">
-        <div class="flex flex-col md:flex-row md:items-end gap-4 -mt-16 md:-mt-20">
-          <div class="flex-shrink-0"><img src="<!-- |avatar| -->" alt="" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-slate-800 shadow-lg object-cover"></div>
-          <div class="flex-1 md:pb-2">
-            <h1 class="text-2xl md:text-3xl font-bold text-forum-text"><!-- |name| --></h1>
-            <div class="mt-1"><!-- |g_title| --></div>
-            <p class="text-forum-muted mt-1"><!-- |member_title| --></p>
-          </div>
-          <div class="flex items-center gap-2 md:pb-2"><!-- |pm_link| --> <!-- |admin_options| --></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-    <div class="space-y-6">
-      <div class="forum-card"><div class="forum-card-body">
-        <h3 class="font-semibold text-forum-text mb-4">Statistics</h3>
-        <div class="space-y-3">
-          <div class="flex items-center justify-between"><span class="text-forum-muted">Posts</span><span class="font-semibold text-forum-text"><!-- |posts| --></span></div>
-          <div class="flex items-center justify-between"><span class="text-forum-muted">Joined</span><span class="text-forum-text"><!-- |joined| --></span></div>
-          <div class="flex items-center justify-between"><span class="text-forum-muted">Last Active</span><span class="text-forum-text"><!-- |last_active| --></span></div>
-        </div>
-        <div class="mt-4"><!-- |warn_level| --></div>
-      </div></div>
-      <div class="forum-card"><div class="forum-card-body">
-        <h3 class="font-semibold text-forum-text mb-4">Personal Information</h3>
-        <div class="space-y-3 text-sm">
-          <div><div class="text-forum-muted">Birthday</div><div class="text-forum-text"><!-- |birthday| --></div></div>
-          <div><div class="text-forum-muted">Age</div><div class="text-forum-text"><!-- |age| --></div></div>
-          <div><div class="text-forum-muted">Location</div><div class="text-forum-text"><!-- |location| --></div></div>
-          <div><div class="text-forum-muted">Website</div><div class="text-forum-text"><!-- |website| --></div></div>
-        </div>
-        <div class="mt-4 pt-4 border-t border-forum-border"><!-- |custom_fields| --></div>
-      </div></div>
-      <div class="forum-card"><div class="forum-card-body">
-        <h3 class="font-semibold text-forum-text mb-4">Contact</h3>
-        <div class="flex flex-wrap gap-2"><!-- |contact_info| --></div>
-      </div></div>
-    </div>
-    <div class="lg:col-span-2 space-y-6">
-      <div class="forum-card"><div class="forum-card-body"><h3 class="font-semibold text-forum-text mb-4">About Me</h3><div class="text-forum-text leading-relaxed"><!-- |bio| --></div></div></div>
-      <div class="forum-card"><div class="forum-card-body"><h3 class="font-semibold text-forum-text mb-4">Interests</h3><p class="text-forum-text"><!-- |interests| --></p></div></div>
-      <div class="forum-card"><div class="forum-card-body"><h3 class="font-semibold text-forum-text mb-4">Recent Posts</h3><div class="divide-y divide-forum-border -mx-5"><!-- |recent_posts| --></div></div></div>
-      <div class="forum-card"><div class="forum-card-body"><h3 class="font-semibold text-forum-text mb-4">Friends</h3><div class="flex flex-wrap gap-2"><!-- |friends| --></div></div></div>
-      <div class="forum-card"><div class="forum-card-body"><h3 class="font-semibold text-forum-text mb-4">Signature</h3><div class="signature border-0 pt-0 mt-0"><!-- |signature| --></div></div></div>
-      <div class="forum-card"><div class="forum-card-body"><h3 class="font-semibold text-forum-text mb-4">Profile Comments</h3><div class="space-y-4"><!-- |comments| --></div></div></div>
-    </div>
-  </div>
-</div>]]></item>
-
-    <item name='redirect_row'><![CDATA[<div class="category-row group" id="redirect-<!-- |forum_id| -->">
-  <div class="category-marker bg-orange-500"></div>
-  <div class="category-icon"><!-- |img_new_post| --></div>
-  <div class="category-info">
-    <div class="category-title inline-flex items-center gap-2"><!-- |name| -->
-      <svg class="w-4 h-4 text-forum-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-      </svg>
-    </div>
-    <p class="category-description"><!-- |description| --></p>
-    <span class="inline-flex items-center gap-1 mt-2 text-xs text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-2 py-0.5 rounded">External Link</span>
-  </div>
-  <div class="category-stats hidden lg:flex">
-    <div class="text-center">
-      <div class="font-semibold text-forum-text"><!-- |redirect_hits| --></div>
-      <div class="text-xs">Clicks</div>
-    </div>
-  </div>
-  <div class="category-last-post hidden md:flex items-center justify-center text-sm text-forum-muted"><span class="italic">Redirect Forum</span></div>
-</div>]]></item>
-
-    <item name='subf_head'><![CDATA[<div class="subforums-container">
-  <span class="text-xs font-medium text-forum-muted uppercase tracking-wide">Subforums:</span>
-  <div class="inline-flex flex-wrap items-center gap-2 ml-2">
-    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-sm bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors group" id="subforum-<!-- |sub_id| -->">
-      <span class="subforum-icon"><!-- |sub_img| --></span>
-      <span class="text-forum-text group-hover:text-forum-accent transition-colors"><!-- |sub_name| --></span>
-    </span>
-  </div>
-</div>]]></item>
-
-    <item name='topic_list_head'><![CDATA[<div class="topic-list-wrapper">
-  <div class="forum-card mb-4">
-    <div class="forum-card-header">
-      <div class="flex items-center justify-between"><h1 class="text-xl font-bold"><!-- |forum_name| --></h1></div>
-    </div>
-  </div>
-  <div class="forum-card">
-    <div class="px-5 py-3 bg-slate-50 dark:bg-slate-800/50 border-b border-forum-border">
-      <div class="flex items-center gap-4 text-sm font-medium text-forum-muted">
-        <div class="w-10"></div>
-        <div class="flex-1">Topic</div>
-        <div class="hidden lg:block w-[120px] text-center">Stats</div>
-        <div class="hidden md:block w-[180px] text-right">Last Post</div>
-      </div>
-    </div>
-    <% ANNOUNCEMENTS %>
-    <div class="divide-y divide-forum-border"><% TOPIC_ROWS %></div>
-    <div class="forum-card-footer flex items-center justify-between">
-      <div class="text-sm text-forum-muted"><!-- |sort_options| --></div>
-    </div>
-  </div>
-  <!-- |mod_form_end| -->
-</div>]]></item>
-
-    <item name='topic_row'><![CDATA[<div class="topic-row" id="topic-<!-- |tid| -->">
-  <div class="hidden"><!-- |checkbox| --></div>
-  <div class="topic-status"><!-- |img_folder| --></div>
-  <div class="topic-info">
-    <div class="flex items-center gap-2 flex-wrap">
-      <span class="topic-prefix"><!-- |prefix| --></span>
-      <span class="inline-flex items-center gap-1"><!-- |pinned| --> <!-- |poll| --> <!-- |moved| --></span>
-      <span class="topic-title"><!-- |topic| --></span>
-      <span class="text-xs text-forum-muted"><!-- |pages| --></span>
-    </div>
-    <p class="text-sm text-forum-muted mt-0.5 line-clamp-1"><!-- |desc| --></p>
-    <div class="topic-meta">
-      <span>Started by</span> <!-- |starter| -->
-      <span class="text-forum-border">&bull;</span>
-      <span><!-- |start_date| --></span>
-    </div>
-  </div>
-  <div class="topic-stats hidden lg:flex">
-    <div class="text-center">
-      <div class="font-semibold text-forum-text"><!-- |replies| --></div>
-      <div class="text-xs">Replies</div>
-    </div>
-    <div class="text-center">
-      <div class="font-semibold text-forum-text"><!-- |views| --></div>
-      <div class="text-xs">Views</div>
-    </div>
-  </div>
-  <div class="topic-last-post hidden md:block">
-    <div class="font-medium text-forum-text"><!-- |last_poster| --></div>
-    <p class="text-xs text-forum-muted mt-0.5"><a href="<!-- |last_url| -->" class="hover:text-forum-accent"><!-- |last_post| --></a></p>
-  </div>
-</div>]]></item>
-
-  </templates>
+/* Dark mode variables */
+.dark {
+  --forum-bg: #0f172a;
+  --forum-surface: #1e293b;
+  --forum-border: #334155;
+  --forum-text: #f1f5f9;
+  --forum-muted: #94a3b8;
+  --forum-accent: #38bdf8;
+}]]></css>
 </skin>

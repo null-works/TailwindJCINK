@@ -3,8 +3,6 @@
 <head>
 <title><% TITLE %></title>
 <% CSS %>
-<script src="https://files.jcink.net/html/jquery-3.7.1.min.js"></script>
-<script src="https://files.jcink.net/html/catcollapse.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -12,14 +10,13 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        primary: {"50":"#f0f9ff","100":"#e0f2fe","200":"#bae6fd","300":"#7dd3fc","400":"#38bdf8","500":"#0ea5e9","600":"#0284c7","700":"#0369a1","800":"#075985","900":"#0c4a6e"},
         forum: {
-          bg: 'var(--forum-bg, #f1f5f9)',
-          surface: 'var(--forum-surface, #ffffff)',
-          border: 'var(--forum-border, #e2e8f0)',
-          text: 'var(--forum-text, #1e293b)',
-          muted: 'var(--forum-muted, #64748b)',
-          accent: 'var(--forum-accent, #0ea5e9)',
+          bg: 'var(--forum-bg)',
+          surface: 'var(--forum-surface)',
+          border: 'var(--forum-border)',
+          text: 'var(--forum-text)',
+          muted: 'var(--forum-muted)',
+          accent: 'var(--forum-accent)',
         }
       },
       maxWidth: {
@@ -31,22 +28,17 @@ tailwind.config = {
 </script>
 </head>
 <body class="bg-forum-bg text-forum-text">
-<div id="wrapper" class="max-w-forum mx-auto px-4">
-  <div id="logo" class="py-4">
-    <a href="index.php"><!-- |board_name| --></a>
-  </div>
+<div id="wrapper" class="max-w-forum mx-auto px-4 py-4">
   <% BOARD HEADER %>
-  <div id="innerwrapper">
-    <div id="navi" class="mb-4">
-      <% NAVIGATION %>
-    </div>
-    <% DSHOUTBOX %>
-    <% BOARD %>
-    <div id="skin_selector" class="my-4">
-      <% SKIN_SELECTOR %>
-    </div>
-    <% COPYRIGHT %>
+  <div id="navigation" class="mb-4">
+    <% NAVIGATION %>
   </div>
+  <% DSHOUTBOX %>
+  <% BOARD %>
+  <div id="skin_selector" class="my-4">
+    <% SKIN_SELECTOR %>
+  </div>
+  <% COPYRIGHT %>
 </div>
 </body>
 </html>
