@@ -43,11 +43,15 @@ This is the most important template - it contains the Tailwind CDN and all confi
 5. Paste it into the text area
 6. Click **Update**
 
-### Step 3: Install the Stylesheet (Optional)
+### Step 3: Install the Stylesheet
+
+The stylesheet is output via the `<% CSS %>` tag in the Board Wrapper.
 
 1. In **Manage Skin Sets**, click the **Stylesheet** link under your skin
-2. You can add any additional custom CSS here
+2. Add any custom CSS overrides or additional styles here
 3. Click **Update**
+
+**Note:** The Board Wrapper contains all core Tailwind component classes. Use the stylesheet for site-specific customizations that should persist across template updates.
 
 ### Step 4: Edit HTML Templates
 

@@ -30,6 +30,9 @@ tailwind.config = {
 }
 </script>
 <style type="text/tailwindcss">
+/* ============================================
+   CSS Custom Properties (Theme Variables)
+   ============================================ */
 :root {
   --forum-bg: #f1f5f9;
   --forum-surface: #ffffff;
@@ -37,6 +40,13 @@ tailwind.config = {
   --forum-text: #1e293b;
   --forum-muted: #64748b;
   --forum-accent: #0ea5e9;
+  --forum-accent-hover: #0284c7;
+  --category-1: #ef4444;
+  --category-2: #f97316;
+  --category-3: #eab308;
+  --category-4: #22c55e;
+  --category-5: #06b6d4;
+  --category-6: #8b5cf6;
 }
 .dark {
   --forum-bg: #0f172a;
@@ -45,6 +55,173 @@ tailwind.config = {
   --forum-text: #f1f5f9;
   --forum-muted: #94a3b8;
   --forum-accent: #38bdf8;
+  --forum-accent-hover: #7dd3fc;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+@layer base {
+  a { @apply text-forum-accent hover:text-forum-accent transition-colors; }
+  input[type="text"], input[type="password"], input[type="search"], textarea, select {
+    @apply bg-forum-surface border border-forum-border rounded-lg px-3 py-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-forum-accent focus:border-transparent;
+  }
+}
+
+/* ============================================
+   Component Classes
+   ============================================ */
+@layer components {
+  /* Card Component */
+  .forum-card {
+    @apply bg-forum-surface rounded-lg shadow-sm border border-forum-border overflow-hidden;
+  }
+  .forum-card-header {
+    @apply px-5 py-4 border-b border-forum-border;
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white;
+  }
+  .forum-card-body { @apply px-5 py-4; }
+  .forum-card-footer {
+    @apply px-5 py-3 border-t border-forum-border bg-slate-50 dark:bg-slate-800/50;
+  }
+
+  /* Category Row */
+  .category-row {
+    @apply flex items-stretch border-b border-forum-border last:border-b-0;
+    @apply hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors;
+  }
+  .category-marker { @apply w-1 flex-shrink-0; }
+  .category-icon { @apply w-16 flex items-center justify-center text-2xl text-forum-muted; }
+  .category-info { @apply flex-1 py-4 pr-4; }
+  .category-title { @apply text-lg font-semibold text-forum-text hover:text-forum-accent transition-colors; }
+  .category-description { @apply text-sm text-forum-muted mt-1; }
+  .category-stats {
+    @apply flex items-center gap-6 px-4 py-4 text-sm text-forum-muted;
+    @apply border-l border-forum-border min-w-[200px];
+  }
+  .category-last-post {
+    @apply flex items-center gap-3 px-4 py-4 min-w-[280px] border-l border-forum-border;
+  }
+
+  /* Topic Row */
+  .topic-row {
+    @apply flex items-center gap-4 px-5 py-4 border-b border-forum-border last:border-b-0;
+    @apply hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors;
+  }
+  .topic-status {
+    @apply w-10 h-10 rounded-full flex items-center justify-center;
+    @apply bg-slate-100 dark:bg-slate-700 text-forum-muted;
+  }
+  .topic-info { @apply flex-1 min-w-0; }
+  .topic-title { @apply font-medium text-forum-text hover:text-forum-accent transition-colors truncate block; }
+  .topic-meta { @apply text-sm text-forum-muted mt-1 flex items-center gap-2; }
+  .topic-stats { @apply flex items-center gap-4 text-sm text-forum-muted min-w-[120px] justify-center; }
+  .topic-last-post { @apply text-sm text-right min-w-[180px]; }
+  .topic-prefix { @apply text-xs; }
+
+  /* Post Component */
+  .post {
+    @apply flex gap-5 p-5 border-b border-forum-border last:border-b-0 bg-forum-surface;
+  }
+  .post:nth-child(odd) { @apply bg-slate-50/50 dark:bg-slate-800/20; }
+  .post-sidebar { @apply w-[180px] flex-shrink-0 text-center; }
+  .post-content { @apply flex-1 min-w-0; }
+  .post-header {
+    @apply flex items-center justify-between pb-3 mb-3 border-b border-forum-border;
+  }
+  .post-body { @apply text-forum-text leading-relaxed; }
+  .post-footer {
+    @apply flex items-center justify-between mt-4 pt-3 border-t border-forum-border text-sm text-forum-muted;
+  }
+  .post-actions { @apply flex items-center gap-2; }
+
+  /* Mini Profile */
+  .mini-profile { @apply text-center; }
+  .mini-profile-avatar {
+    @apply w-28 h-28 mx-auto mb-3 rounded-full border-4 border-forum-border object-cover;
+  }
+  .mini-profile-name { @apply font-semibold text-forum-text; }
+  .mini-profile-stats { @apply text-xs text-forum-muted mt-2 space-y-1; }
+  .mini-profile-icons { @apply flex justify-center gap-2 mt-3; }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium text-sm;
+    @apply transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  .btn-primary { @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500; }
+  .btn-secondary {
+    @apply bg-slate-200 text-slate-700 hover:bg-slate-300;
+    @apply dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 focus:ring-slate-500;
+  }
+  .btn-ghost { @apply text-forum-muted hover:text-forum-text hover:bg-slate-100 dark:hover:bg-slate-800; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+
+  /* Group Badges */
+  .group-badge { @apply text-xs font-medium px-2 py-0.5 rounded-full; }
+  .group-badge-admin { @apply bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300; }
+  .group-badge-mod { @apply bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300; }
+  .group-badge-member { @apply bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300; }
+
+  /* Tags */
+  .tag { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300; }
+  .tag-primary { @apply bg-primary-100 text-primary-700 dark:bg-primary-900/50 dark:text-primary-300; }
+
+  /* Alerts */
+  .alert { @apply px-4 py-3 rounded-lg border; }
+  .alert-info { @apply bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-300; }
+  .alert-success { @apply bg-green-50 border-green-200 text-green-800 dark:bg-green-900/30 dark:border-green-800 dark:text-green-300; }
+  .alert-warning { @apply bg-amber-50 border-amber-200 text-amber-800 dark:bg-amber-900/30 dark:border-amber-800 dark:text-amber-300; }
+  .alert-error { @apply bg-red-50 border-red-200 text-red-800 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300; }
+
+  /* Breadcrumbs */
+  .breadcrumbs { @apply flex items-center gap-2 text-sm text-forum-muted py-3; }
+  .breadcrumbs a { @apply hover:text-forum-accent; }
+  .breadcrumbs-separator { @apply text-forum-border; }
+
+  /* Pagination */
+  .pagination { @apply flex items-center justify-center gap-1; }
+  .pagination a, .pagination span {
+    @apply w-10 h-10 flex items-center justify-center rounded-lg text-sm font-medium text-forum-muted;
+    @apply hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors;
+  }
+  .pagination .active { @apply bg-primary-600 text-white hover:bg-primary-700; }
+
+  /* Quick Reply */
+  .quick-reply { @apply bg-forum-surface rounded-lg border border-forum-border p-5; }
+  .quick-reply-header { @apply font-semibold text-forum-text mb-4; }
+  .quick-reply textarea { @apply w-full min-h-[150px] resize-y; }
+
+  /* Signature */
+  .signature { @apply mt-6 pt-4 border-t border-forum-border text-sm text-forum-muted; }
+  .signature img { @apply max-h-[200px]; }
+
+  /* Post BBCode styling */
+  .post-body blockquote {
+    @apply border-l-4 border-primary-300 bg-slate-50 dark:bg-slate-800/50 pl-4 py-2 my-4 italic;
+  }
+  .post-body pre, .post-body code {
+    @apply font-mono text-sm bg-slate-100 dark:bg-slate-800 rounded px-1 py-0.5;
+  }
+  .post-body pre { @apply p-4 overflow-x-auto; }
+  .post-body img { @apply max-w-full h-auto rounded; }
+
+  /* Category marker colors */
+  .bg-category-1 { background-color: var(--category-1); }
+  .bg-category-2 { background-color: var(--category-2); }
+  .bg-category-3 { background-color: var(--category-3); }
+  .bg-category-4 { background-color: var(--category-4); }
+  .bg-category-5 { background-color: var(--category-5); }
+  .bg-category-6 { background-color: var(--category-6); }
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+@layer utilities {
+  .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
+  .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 }
 </style>
 </head>
