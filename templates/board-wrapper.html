@@ -32,66 +32,74 @@
     }
   </script>
   <% JAVASCRIPT %>
-  <style>
-    /* Hide default JCINK elements we're replacing */
-    #jcink-header-wrap { display: none !important; }
-    .acp-0, .mcp-0 { display: none !important; }
-    .g-2 { display: inline-flex !important; }
-    .m-2 { display: none !important; }
-  </style>
 </head>
 
 <body id="<!-- |input_act| -->" class="bg-forum-dark text-forum-muted min-h-screen">
 
-  <!-- Custom Tailwind Header -->
-  <header class="site-header fixed top-0 left-0 right-0 z-50 bg-forum-bg border-b border-forum-border h-14">
-    <div class="max-w-forum mx-auto px-4 h-full flex items-center justify-between">
-      <a href="index.php" class="text-forum-text font-semibold text-lg hover:text-forum-accent transition-colors">Forum</a>
-      <div class="flex items-center gap-2">
-        <button id="theme-toggle" class="p-2 text-forum-muted hover:text-forum-accent transition-colors" title="Toggle Theme">
-          <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
-          <svg id="theme-icon-dark" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
-        </button>
-        <span class="g-<!-- |g_id| -->" style="display:none;">
-          <a href="index.php?act=Login&CODE=00" class="text-sm px-3 py-1 text-forum-muted hover:text-forum-accent">Login</a>
-          <a href="index.php?act=Reg&CODE=00" class="text-sm px-3 py-1 bg-forum-accent text-white rounded hover:bg-forum-accent-hover">Register</a>
-        </span>
-        <span class="m-<!-- |g_id| --> flex items-center gap-1">
-          <a href="index.php?showuser=<!-- |id| -->" class="text-sm text-forum-accent hover:text-forum-accent-hover px-2" title="View Profile"><!-- |name| --></a>
-          <a href="index.php?act=Msg&CODE=01" class="p-2 text-forum-muted hover:text-forum-accent" title="Messages"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg></a>
-          <a href="index.php?act=UserCP&CODE=00" class="p-2 text-forum-muted hover:text-forum-accent" title="My Controls"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg></a>
-          <a href="admin.php" target="_blank" class="acp-<!-- |g_access_cp| --> p-2 text-forum-muted hover:text-forum-accent" title="Admin CP"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/></svg></a>
-          <a href="index.php?act=Login&CODE=03&key=<!-- |auth_key| -->" class="p-2 text-forum-muted hover:text-forum-accent" title="Log Out"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg></a>
-        </span>
-      </div>
+  <!-- Header -->
+  <header class="bg-forum-bg border-b border-forum-border">
+    <div class="max-w-forum mx-auto px-4 py-4">
+      <% BOARD HEADER %>
     </div>
   </header>
 
-  <!-- Hidden JCINK required elements -->
-  <div id="jcink-header-wrap" style="display:none;">
-    <% BOARD HEADER %>
-    <% NAVIGATION %>
+  <!-- Navigation -->
+  <nav class="bg-forum-surface border-b border-forum-border">
+    <div class="max-w-forum mx-auto px-4 py-2">
+      <% NAVIGATION %>
+    </div>
+  </nav>
+
+  <!-- User Bar -->
+  <div class="bg-forum-bg border-b border-forum-border">
+    <div class="max-w-forum mx-auto px-4 py-2 flex items-center justify-between text-sm">
+      <div class="flex items-center gap-4">
+        <span class="g-<!-- |g_id| -->" style="display:none;">
+          <a href="index.php?act=Login&CODE=00" class="text-forum-accent hover:text-forum-accent-hover">Login</a>
+          <span class="text-forum-subtle mx-2">|</span>
+          <a href="index.php?act=Reg&CODE=00" class="text-forum-accent hover:text-forum-accent-hover">Register</a>
+        </span>
+        <span class="m-<!-- |g_id| --> flex items-center gap-4">
+          <span>Logged in as: <a href="index.php?showuser=<!-- |id| -->" class="text-forum-accent hover:text-forum-accent-hover"><!-- |prefix| --><!-- |name| --><!-- |suffix| --></a></span>
+          <a href="index.php?act=Login&CODE=03&key=<!-- |auth_key| -->" class="text-forum-muted hover:text-forum-accent">Log Out</a>
+          <a href="admin.php" target="_blank" class="acp-<!-- |g_access_cp| --> text-forum-muted hover:text-forum-accent">Admin CP</a>
+          <a href="index.php?act=modcp" class="mcp-<!-- |g_is_supmod| --> text-forum-muted hover:text-forum-accent">Mod CP</a>
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="index.php?act=UserCP&CODE=00" class="text-forum-accent hover:text-forum-accent-hover">My Controls</a>
+        <a href="index.php?act=Msg&CODE=01" class="text-forum-accent hover:text-forum-accent-hover"><!-- |new_msg| --> New Messages</a>
+        <a href="index.php?act=Search&CODE=getactive" class="text-forum-accent hover:text-forum-accent-hover">View New Posts</a>
+        <a href="index.php?act=UserCP&CODE=alerts" class="text-forum-accent hover:text-forum-accent-hover">Alerts (<!-- |new_alerts| -->)</a>
+      </div>
+      <!-- Theme Toggle -->
+      <button id="theme-toggle" class="p-2 text-forum-muted hover:text-forum-accent" title="Toggle Theme">
+        <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+        <svg id="theme-icon-dark" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+      </button>
+    </div>
   </div>
 
   <!-- Main Content -->
-  <main class="pt-16 min-h-screen">
+  <main class="min-h-screen">
     <div id="wrapper" class="max-w-forum mx-auto px-4 py-6">
       <% BOARD %>
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-forum-border py-6">
+  <footer class="bg-forum-bg border-t border-forum-border py-6">
     <div class="max-w-forum mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
       <div id="skin_selector"><% SKIN_SELECTOR %></div>
       <div class="text-xs text-forum-subtle"><% COPYRIGHT %></div>
       <div class="flex gap-4 text-sm">
-        <a href="index.php?act=Login&CODE=06" class="text-forum-subtle hover:text-forum-accent">Clear Cookies</a>
-        <a href="index.php?act=Login&CODE=05" class="text-forum-subtle hover:text-forum-accent">Mark Read</a>
+        <a href="index.php?act=Login&CODE=06" class="text-forum-subtle hover:text-forum-accent">Delete Cookies</a>
+        <a href="index.php?act=Login&CODE=05" class="text-forum-subtle hover:text-forum-accent">Mark All Read</a>
       </div>
     </div>
   </footer>
 
+  <!-- Theme Toggle Script -->
   <script>
     (function() {
       const html = document.documentElement;
@@ -119,6 +127,12 @@
       }
     })();
   </script>
+
+  <style>
+    .acp-0, .mcp-0 { display: none !important; }
+    .g-2 { display: inline !important; }
+    .m-2 { display: none !important; }
+  </style>
 
 </body>
 </html>
