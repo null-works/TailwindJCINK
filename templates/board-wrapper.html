@@ -45,6 +45,113 @@
     .acp-0, .mcp-0 { display: none !important; }
     .g-2 { display: inline-flex !important; }
     .m-2 { display: none !important; }
+
+    /* ========== MOBILE OPTIMIZATION ========== */
+
+    /* Mobile menu panel */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Mobile menu backdrop */
+    .mobile-backdrop {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    .mobile-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Touch-friendly targets (44px minimum) */
+    @media (max-width: 768px) {
+      .touch-target {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Hide desktop user controls on mobile */
+      .desktop-controls { display: none !important; }
+
+      /* Show mobile menu button */
+      .mobile-menu-btn { display: flex !important; }
+    }
+
+    @media (min-width: 769px) {
+      /* Hide mobile elements on desktop */
+      .mobile-menu-btn { display: none !important; }
+      .mobile-menu { display: none !important; }
+      .mobile-backdrop { display: none !important; }
+    }
+
+    /* ========== JCINK TABLE RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      /* Force JCINK tables to be responsive */
+      #wrapper table,
+      .tablefill,
+      .ipbtable,
+      #idx,
+      .maintitle + table,
+      table[width] {
+        width: 100% !important;
+        display: block !important;
+        overflow-x: auto !important;
+      }
+
+      /* Stack table cells on mobile */
+      #wrapper td,
+      #wrapper th {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Hide less important columns on mobile */
+      .row4 > td:nth-child(2),
+      .row4 > td:nth-child(3) {
+        display: none !important;
+      }
+
+      /* Forum row adjustments */
+      .row1, .row2, .row3, .row4 {
+        padding: 12px !important;
+      }
+
+      /* Category headers */
+      .maintitle {
+        font-size: 14px !important;
+        padding: 10px 12px !important;
+      }
+
+      /* Post content */
+      .postcolor, .post1, .post2 {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+      }
+
+      /* Breadcrumb wrap */
+      #navstrip {
+        font-size: 12px !important;
+        word-wrap: break-word !important;
+      }
+    }
+
+    /* ========== JCINK MOBILE MODE OVERRIDES ========== */
+    #mobile #wrapper {
+      padding: 8px !important;
+    }
+
+    #mobile .maintitle {
+      font-size: 13px !important;
+    }
   </style>
 </head>
 
@@ -62,46 +169,135 @@
         Forum
       </a>
 
-      <!-- User Controls -->
-      <div class="flex items-center gap-2">
+      <!-- Desktop User Controls -->
+      <div class="desktop-controls flex items-center gap-2">
 
         <!-- Theme Toggle -->
-        <button id="theme-toggle" class="p-2 text-forum-muted hover:text-forum-accent transition-colors" title="Toggle Theme">
-          <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+        <button id="theme-toggle" class="p-2 text-forum-muted hover:text-forum-accent transition-colors touch-target" title="Toggle Theme" aria-label="Toggle Theme">
+          <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
           </svg>
-          <svg id="theme-icon-dark" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg id="theme-icon-dark" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
           </svg>
         </button>
 
-        <!-- Guest Links -->
+        <!-- Guest Links (Desktop) -->
         <span class="g-<!-- |g_id| -->" style="display:none;">
-          <a href="index.php?act=Login&CODE=00" class="text-sm px-3 py-1 text-forum-muted hover:text-forum-accent">Login</a>
-          <a href="index.php?act=Reg&CODE=00" class="text-sm px-3 py-1 bg-forum-accent text-white rounded hover:bg-forum-accent-hover">Register</a>
+          <a href="index.php?act=Login&CODE=00" class="text-sm px-3 py-2 text-forum-muted hover:text-forum-accent">Login</a>
+          <a href="index.php?act=Reg&CODE=00" class="text-sm px-3 py-2 bg-forum-accent text-white rounded hover:bg-forum-accent-hover">Register</a>
         </span>
 
-        <!-- Member Links -->
+        <!-- Member Links (Desktop) -->
         <span class="m-<!-- |g_id| --> flex items-center gap-1">
           <a href="index.php?showuser=<!-- |id| -->" class="text-sm text-forum-accent hover:text-forum-accent-hover px-2" title="View Profile">
             <!-- |name| -->
           </a>
-          <a href="index.php?act=Msg&CODE=01" class="p-2 text-forum-muted hover:text-forum-accent" title="Messages">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+          <a href="index.php?act=Msg&CODE=01" class="p-2 text-forum-muted hover:text-forum-accent touch-target" title="Messages" aria-label="Messages">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
           </a>
-          <a href="index.php?act=UserCP&CODE=00" class="p-2 text-forum-muted hover:text-forum-accent" title="My Controls">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+          <a href="index.php?act=UserCP&CODE=00" class="p-2 text-forum-muted hover:text-forum-accent touch-target" title="My Controls" aria-label="My Controls">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
           </a>
-          <a href="admin.php" target="_blank" class="acp-<!-- |g_access_cp| --> p-2 text-forum-muted hover:text-forum-accent" title="Admin CP">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/></svg>
+          <a href="admin.php" target="_blank" class="acp-<!-- |g_access_cp| --> p-2 text-forum-muted hover:text-forum-accent touch-target" title="Admin CP" aria-label="Admin Control Panel">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/></svg>
           </a>
-          <a href="index.php?act=Login&CODE=03&key=<!-- |auth_key| -->" class="p-2 text-forum-muted hover:text-forum-accent" title="Log Out">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+          <a href="index.php?act=Login&CODE=03&key=<!-- |auth_key| -->" class="p-2 text-forum-muted hover:text-forum-accent touch-target" title="Log Out" aria-label="Log Out">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
           </a>
         </span>
       </div>
+
+      <!-- Mobile Controls -->
+      <div class="flex items-center gap-1">
+        <!-- Theme Toggle (Mobile - always visible) -->
+        <button id="theme-toggle-mobile" class="mobile-menu-btn p-3 text-forum-muted hover:text-forum-accent transition-colors touch-target" title="Toggle Theme" aria-label="Toggle Theme">
+          <svg class="theme-icon-light w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+          </svg>
+          <svg class="theme-icon-dark w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+          </svg>
+        </button>
+
+        <!-- Hamburger Menu Button -->
+        <button id="mobile-menu-toggle" class="mobile-menu-btn p-3 text-forum-muted hover:text-forum-accent transition-colors touch-target" aria-label="Open Menu" aria-expanded="false">
+          <svg class="hamburger-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg class="close-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
+
+  <!-- Mobile Menu Backdrop -->
+  <div id="mobile-backdrop" class="mobile-backdrop fixed inset-0 bg-black/50 z-40"></div>
+
+  <!-- Mobile Menu Panel -->
+  <nav id="mobile-menu" class="mobile-menu fixed top-14 right-0 bottom-0 w-72 max-w-[80vw] bg-forum-bg border-l border-forum-border z-50 overflow-y-auto" aria-label="Mobile Navigation">
+    <div class="p-4 space-y-2">
+
+      <!-- Guest Links (Mobile) -->
+      <div class="g-<!-- |g_id| --> space-y-2" style="display:none;">
+        <a href="index.php?act=Login&CODE=00" class="flex items-center gap-3 px-4 py-3 text-forum-muted hover:text-forum-accent hover:bg-forum-surface rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Login</span>
+        </a>
+        <a href="index.php?act=Reg&CODE=00" class="flex items-center gap-3 px-4 py-3 bg-forum-accent text-white hover:bg-forum-accent-hover rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/></svg>
+          <span>Register</span>
+        </a>
+      </div>
+
+      <!-- Member Links (Mobile) -->
+      <div class="m-<!-- |g_id| --> space-y-1">
+        <div class="px-4 py-2 text-xs text-forum-subtle uppercase tracking-wider">Account</div>
+
+        <a href="index.php?showuser=<!-- |id| -->" class="flex items-center gap-3 px-4 py-3 text-forum-accent hover:bg-forum-surface rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+          <span><!-- |name| --></span>
+        </a>
+
+        <a href="index.php?act=Msg&CODE=01" class="flex items-center gap-3 px-4 py-3 text-forum-muted hover:text-forum-accent hover:bg-forum-surface rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+          <span>Messages</span>
+        </a>
+
+        <a href="index.php?act=UserCP&CODE=00" class="flex items-center gap-3 px-4 py-3 text-forum-muted hover:text-forum-accent hover:bg-forum-surface rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+          <span>My Controls</span>
+        </a>
+
+        <a href="admin.php" target="_blank" class="acp-<!-- |g_access_cp| --> flex items-center gap-3 px-4 py-3 text-forum-muted hover:text-forum-accent hover:bg-forum-surface rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/></svg>
+          <span>Admin CP</span>
+        </a>
+
+        <div class="border-t border-forum-border my-2"></div>
+
+        <a href="index.php?act=Login&CODE=03&key=<!-- |auth_key| -->" class="flex items-center gap-3 px-4 py-3 text-forum-muted hover:text-red-400 hover:bg-forum-surface rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+          <span>Log Out</span>
+        </a>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="border-t border-forum-border pt-4 mt-4 space-y-1">
+        <div class="px-4 py-2 text-xs text-forum-subtle uppercase tracking-wider">Quick Links</div>
+        <a href="index.php?act=Login&CODE=06" class="flex items-center gap-3 px-4 py-3 text-forum-muted hover:text-forum-accent hover:bg-forum-surface rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
+          <span>Clear Cookies</span>
+        </a>
+        <a href="index.php?act=Login&CODE=05" class="flex items-center gap-3 px-4 py-3 text-forum-muted hover:text-forum-accent hover:bg-forum-surface rounded-lg transition-colors touch-target">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Mark All Read</span>
+        </a>
+      </div>
+    </div>
+  </nav>
 
   <!-- Main Content -->
   <main class="pt-16 min-h-screen">
@@ -126,35 +322,103 @@
     </div>
   </footer>
 
-  <!-- Theme Toggle Script -->
+  <!-- Theme Toggle & Mobile Menu Script -->
   <script>
     (function() {
+      // ========== THEME TOGGLE ==========
       const html = document.documentElement;
-      const toggle = document.getElementById('theme-toggle');
-      const iconLight = document.getElementById('theme-icon-light');
-      const iconDark = document.getElementById('theme-icon-dark');
 
       function setTheme(theme) {
         localStorage.setItem('theme', theme);
         html.className = theme;
-        if (theme === 'theme-dark') {
-          iconLight.classList.remove('hidden');
-          iconDark.classList.add('hidden');
-        } else {
-          iconLight.classList.add('hidden');
-          iconDark.classList.remove('hidden');
-        }
+
+        // Update all theme icons (desktop + mobile)
+        document.querySelectorAll('.theme-icon-light, #theme-icon-light').forEach(el => {
+          el.classList.toggle('hidden', theme !== 'theme-dark');
+        });
+        document.querySelectorAll('.theme-icon-dark, #theme-icon-dark').forEach(el => {
+          el.classList.toggle('hidden', theme === 'theme-dark');
+        });
       }
 
+      function toggleTheme() {
+        const current = localStorage.getItem('theme') || 'theme-light';
+        setTheme(current === 'theme-dark' ? 'theme-light' : 'theme-dark');
+      }
+
+      // Initialize theme
       const saved = localStorage.getItem('theme') || 'theme-light';
       setTheme(saved);
 
-      if (toggle) {
-        toggle.addEventListener('click', function() {
-          const current = localStorage.getItem('theme') || 'theme-light';
-          setTheme(current === 'theme-dark' ? 'theme-light' : 'theme-dark');
+      // Desktop theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+      }
+
+      // Mobile theme toggle
+      const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+      if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', toggleTheme);
+      }
+
+      // ========== MOBILE MENU ==========
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const backdrop = document.getElementById('mobile-backdrop');
+      const hamburgerIcon = menuToggle?.querySelector('.hamburger-icon');
+      const closeIcon = menuToggle?.querySelector('.close-icon');
+
+      function openMenu() {
+        mobileMenu?.classList.add('open');
+        backdrop?.classList.add('open');
+        hamburgerIcon?.classList.add('hidden');
+        closeIcon?.classList.remove('hidden');
+        menuToggle?.setAttribute('aria-expanded', 'true');
+        menuToggle?.setAttribute('aria-label', 'Close Menu');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        mobileMenu?.classList.remove('open');
+        backdrop?.classList.remove('open');
+        hamburgerIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        menuToggle?.setAttribute('aria-label', 'Open Menu');
+        document.body.style.overflow = '';
+      }
+
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          const isOpen = mobileMenu?.classList.contains('open');
+          isOpen ? closeMenu() : openMenu();
         });
       }
+
+      // Close menu when clicking backdrop
+      if (backdrop) {
+        backdrop.addEventListener('click', closeMenu);
+      }
+
+      // Close menu when clicking a link inside
+      mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Close menu on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
+          closeMenu();
+        }
+      });
+
+      // Close menu on resize to desktop
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileMenu?.classList.contains('open')) {
+          closeMenu();
+        }
+      });
     })();
   </script>
 
