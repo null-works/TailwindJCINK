@@ -33,28 +33,28 @@
   </script>
   <% JAVASCRIPT %>
   <style>
-    /* Theme color variables */
-    .theme-light {
-      --bg-1: #ffffff;
-      --bg-2: #f9fafb;
-      --bg-3: #e5e7eb;
-      --bg-4: #f3f4f6;
-      --text-clear: #111827;
-      --text-medCon: #374151;
-      --text-loCon: #6b7280;
-      --accent-1: #6366f1;
-      --accent-2: #4f46e5;
+    /* Theme color variables - use html selector for higher specificity */
+    html.theme-light, html.theme-light body {
+      --bg-1: #ffffff !important;
+      --bg-2: #f9fafb !important;
+      --bg-3: #e5e7eb !important;
+      --bg-4: #f3f4f6 !important;
+      --text-clear: #111827 !important;
+      --text-medCon: #374151 !important;
+      --text-loCon: #6b7280 !important;
+      --accent-1: #6366f1 !important;
+      --accent-2: #4f46e5 !important;
     }
-    .theme-dark {
-      --bg-1: #0f0f1a;
-      --bg-2: #12121f;
-      --bg-3: #1a1a2e;
-      --bg-4: #0a0a12;
-      --text-clear: #f9fafb;
-      --text-medCon: #e5e7eb;
-      --text-loCon: #9ca3af;
-      --accent-1: #818cf8;
-      --accent-2: #a5b4fc;
+    html.theme-dark, html.theme-dark body {
+      --bg-1: #0f0f1a !important;
+      --bg-2: #12121f !important;
+      --bg-3: #1a1a2e !important;
+      --bg-4: #0a0a12 !important;
+      --text-clear: #f9fafb !important;
+      --text-medCon: #e5e7eb !important;
+      --text-loCon: #9ca3af !important;
+      --accent-1: #818cf8 !important;
+      --accent-2: #a5b4fc !important;
     }
 
     /* Hide old JCINK default elements from BOARD HEADER */
