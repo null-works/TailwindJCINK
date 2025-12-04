@@ -46,12 +46,6 @@
     .g-2 { display: inline-flex !important; }
     .m-2 { display: none !important; }
 
-    /* Theme icon visibility (CSS-controlled) */
-    .theme-light .theme-icon-light { display: none; }
-    .theme-light .theme-icon-dark { display: block; }
-    .theme-dark .theme-icon-light { display: block; }
-    .theme-dark .theme-icon-dark { display: none; }
-
     /* ========== MOBILE OPTIMIZATION ========== */
 
     /* CSS-only mobile menu using details/summary */
@@ -169,11 +163,11 @@
       <div class="desktop-controls flex items-center gap-2">
 
         <!-- Theme Toggle -->
-        <button data-theme-toggle class="p-2 text-forum-muted hover:text-forum-accent transition-colors touch-target" title="Toggle Theme" aria-label="Toggle Theme">
-          <svg class="theme-icon-light w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+        <button id="theme-toggle" class="p-2 text-forum-muted hover:text-forum-accent transition-colors touch-target" title="Toggle Theme" aria-label="Toggle Theme">
+          <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
           </svg>
-          <svg class="theme-icon-dark w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <svg id="theme-icon-dark" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
           </svg>
         </button>
@@ -207,8 +201,8 @@
       <!-- Mobile Controls -->
       <div class="flex items-center gap-1">
         <!-- Theme Toggle (Mobile) -->
-        <button data-theme-toggle class="md:hidden p-3 text-forum-muted hover:text-forum-accent transition-colors touch-target" title="Toggle Theme" aria-label="Toggle Theme">
-          <svg class="theme-icon-light w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+        <button id="theme-toggle-mobile" class="md:hidden p-3 text-forum-muted hover:text-forum-accent transition-colors touch-target" title="Toggle Theme" aria-label="Toggle Theme">
+          <svg class="theme-icon-light w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
           </svg>
           <svg class="theme-icon-dark w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -303,15 +297,44 @@
     </div>
   </footer>
 
-  <!-- Theme Toggle Script -->
+  <!-- Theme Toggle Script (only JS needed) -->
   <script>
     (function() {
-      const h = document.documentElement;
-      h.className = localStorage.getItem('theme') || 'theme-light';
-      document.querySelectorAll('[data-theme-toggle]').forEach(b => b.onclick = () => {
-        h.className = h.className === 'theme-dark' ? 'theme-light' : 'theme-dark';
-        localStorage.setItem('theme', h.className);
-      });
+      const html = document.documentElement;
+
+      function setTheme(theme) {
+        localStorage.setItem('theme', theme);
+        html.className = theme;
+
+        // Update all theme icons (desktop + mobile)
+        document.querySelectorAll('.theme-icon-light, #theme-icon-light').forEach(el => {
+          el.classList.toggle('hidden', theme !== 'theme-dark');
+        });
+        document.querySelectorAll('.theme-icon-dark, #theme-icon-dark').forEach(el => {
+          el.classList.toggle('hidden', theme === 'theme-dark');
+        });
+      }
+
+      function toggleTheme() {
+        const current = localStorage.getItem('theme') || 'theme-light';
+        setTheme(current === 'theme-dark' ? 'theme-light' : 'theme-dark');
+      }
+
+      // Initialize theme from localStorage
+      const saved = localStorage.getItem('theme') || 'theme-light';
+      setTheme(saved);
+
+      // Desktop theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+      }
+
+      // Mobile theme toggle
+      const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+      if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', toggleTheme);
+      }
     })();
   </script>
 
