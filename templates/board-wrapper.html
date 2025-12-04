@@ -440,6 +440,45 @@
           closeMenu();
         }
       });
+
+      // ========== MOBILE TABLE HANDLER ==========
+      function initMobileTables() {
+        if (window.innerWidth > 768) return;
+
+        // Find all JCINK tables
+        const tables = document.querySelectorAll('#wrapper table, .tableborder');
+
+        tables.forEach(table => {
+          // Skip if already wrapped
+          if (table.parentElement?.classList.contains('table-scroll-wrapper')) return;
+
+          // Create scroll wrapper
+          const wrapper = document.createElement('div');
+          wrapper.className = 'table-scroll-wrapper';
+          wrapper.style.cssText = 'overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -8px;padding:0 8px;';
+
+          // Wrap the table
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+
+          // Ensure table has minimum width
+          table.style.minWidth = '600px';
+        });
+      }
+
+      // Run on load and resize
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileTables);
+      } else {
+        initMobileTables();
+      }
+
+      window.addEventListener('resize', function() {
+        // Re-run on resize to mobile
+        if (window.innerWidth <= 768) {
+          initMobileTables();
+        }
+      });
     })();
   </script>
 
