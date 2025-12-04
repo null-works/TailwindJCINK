@@ -33,8 +33,8 @@
   </script>
   <% JAVASCRIPT %>
   <style>
-    /* Hide old JCINK default elements */
-    #logostrip, #submenu, #userlinks, .newstext,
+    /* Hide old JCINK default elements from BOARD HEADER */
+    #logostrip, #submenu, #userlinks, .newstext, #top,
     #ipbwrapper > table:first-child,
     body > table:first-of-type { display: none !important; }
 
@@ -49,6 +49,9 @@
 </head>
 
 <body id="<!-- |input_act| -->" class="bg-forum-dark text-forum-muted min-h-screen">
+
+  <!-- JCINK Required: Board Header (contains ads on free, required JS) -->
+  <% BOARD HEADER %>
 
   <!-- Site Header - Single Instance -->
   <header class="site-header fixed top-0 left-0 right-0 z-50 bg-forum-bg border-b border-forum-border h-14">
@@ -103,6 +106,10 @@
   <!-- Main Content -->
   <main class="pt-16 min-h-screen">
     <div id="wrapper" class="max-w-forum mx-auto px-4 py-6">
+      <!-- JCINK Required: Navigation/Breadcrumb -->
+      <nav class="text-sm text-forum-muted mb-4">
+        <% NAVIGATION %>
+      </nav>
       <% BOARD %>
     </div>
   </main>
