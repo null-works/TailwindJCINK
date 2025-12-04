@@ -94,35 +94,56 @@
 
     /* ========== JCINK TABLE RESPONSIVE ========== */
     @media (max-width: 768px) {
-      /* Force JCINK tables to be responsive */
+      /* Make tables fit mobile width */
       #wrapper table,
-      .tablefill,
-      .ipbtable,
-      #idx,
-      .maintitle + table,
+      .tableborder,
       table[width] {
         width: 100% !important;
-        display: block !important;
-        overflow-x: auto !important;
+        max-width: 100% !important;
       }
 
-      /* Stack table cells on mobile */
-      #wrapper td,
-      #wrapper th {
-        display: block !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
+      /* Remove fixed widths from cells */
+      #wrapper td[width],
+      #wrapper th[width] {
+        width: auto !important;
       }
 
-      /* Hide less important columns on mobile */
+      /* Hide the table header row (FORUM, TOPICS, REPLIES, LAST POST INFO) */
+      .row2 {
+        display: none !important;
+      }
+
+      /* Hide TOPICS and REPLIES columns (2nd and 3rd cells) */
+      .row1 > td:nth-child(2),
+      .row1 > td:nth-child(3),
       .row4 > td:nth-child(2),
       .row4 > td:nth-child(3) {
         display: none !important;
       }
 
-      /* Forum row adjustments */
-      .row1, .row2, .row3, .row4 {
+      /* Forum name cell - full width */
+      .row1 > td:first-child,
+      .row4 > td:first-child {
+        display: block !important;
+        width: 100% !important;
         padding: 12px !important;
+        border-bottom: 1px solid var(--bg-3) !important;
+      }
+
+      /* Last post info cell - full width, below forum name */
+      .row1 > td:last-child,
+      .row4 > td:last-child {
+        display: block !important;
+        width: 100% !important;
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        background: var(--bg-4) !important;
+      }
+
+      /* Make forum rows stack their cells */
+      .row1, .row4 {
+        display: flex !important;
+        flex-wrap: wrap !important;
       }
 
       /* Category headers */
@@ -131,16 +152,38 @@
         padding: 10px 12px !important;
       }
 
-      /* Post content */
+      /* Category toggle buttons */
+      .maintitle img,
+      .catend img {
+        width: 20px !important;
+        height: 20px !important;
+      }
+
+      /* Post content readability */
       .postcolor, .post1, .post2 {
         font-size: 15px !important;
         line-height: 1.6 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
       }
 
       /* Breadcrumb wrap */
       #navstrip {
         font-size: 12px !important;
         word-wrap: break-word !important;
+      }
+
+      /* Board stats section */
+      #boardstats td {
+        display: block !important;
+        width: 100% !important;
+        padding: 8px 12px !important;
+      }
+
+      /* Main content padding */
+      #wrapper {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
       }
     }
 
