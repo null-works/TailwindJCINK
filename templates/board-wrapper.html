@@ -92,86 +92,51 @@
       .mobile-backdrop { display: none !important; }
     }
 
-    /* ========== JCINK TABLE RESPONSIVE ========== */
+    /* ========== JCINK CONTENT STYLES ========== */
+    /* Note: Front page (forum rows, categories) are now handled by HTML Templates with Tailwind.
+       These styles handle other pages like topics, profiles, etc. */
+
     @media (max-width: 768px) {
-      /* Wrap tables in scrollable container */
+      /* Container padding */
       #wrapper {
         padding-left: 8px !important;
         padding-right: 8px !important;
       }
 
-      /* Simple approach: horizontal scroll for tables */
-      .tableborder,
-      #wrapper > table,
-      table.ipbtable {
-        display: block !important;
-        width: 100% !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-      }
-
-      /* Minimum width to prevent squishing */
-      .tableborder table,
-      #wrapper table table {
-        min-width: 500px !important;
-      }
-
-      /* Category headers - keep readable */
-      .maintitle {
-        font-size: 13px !important;
-        padding: 10px 8px !important;
-        white-space: nowrap !important;
-      }
-
-      /* Smaller text in cells */
-      td.row1, td.row2, td.row4 {
-        font-size: 12px !important;
-        padding: 8px 6px !important;
-      }
-
-      /* Post content - keep readable */
+      /* Post content - readable on mobile */
       .postcolor, .post1, .post2, .signature {
         font-size: 14px !important;
-        line-height: 1.5 !important;
+        line-height: 1.6 !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
       }
 
+      /* Images in posts - prevent overflow */
+      .postcolor img, .post1 img, .post2 img {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
       /* Breadcrumbs */
       #navstrip {
-        font-size: 11px !important;
+        font-size: 12px !important;
         word-wrap: break-word !important;
-        padding: 8px !important;
       }
 
-      /* Board stats - stack cells */
-      #boardstats,
-      table[id*="stats"] {
-        display: block !important;
-        width: 100% !important;
-      }
-
-      #boardstats td,
-      table[id*="stats"] td {
+      /* Board stats - stack on mobile */
+      #boardstats td {
         display: block !important;
         width: 100% !important;
         padding: 8px !important;
-        border-bottom: 1px solid var(--bg-3) !important;
+        text-align: center !important;
       }
 
-      /* Footer links */
-      .ipblink, td.row2 a {
-        font-size: 11px !important;
+      /* Topic tables - horizontal scroll fallback */
+      .tableborder {
+        display: block !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
       }
-    }
-
-    /* ========== JCINK MOBILE MODE OVERRIDES ========== */
-    #mobile #wrapper {
-      padding: 4px !important;
-    }
-
-    #mobile .maintitle {
-      font-size: 12px !important;
     }
   </style>
 </head>
