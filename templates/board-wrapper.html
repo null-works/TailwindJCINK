@@ -94,106 +94,84 @@
 
     /* ========== JCINK TABLE RESPONSIVE ========== */
     @media (max-width: 768px) {
-      /* Make tables fit mobile width */
-      #wrapper table,
+      /* Wrap tables in scrollable container */
+      #wrapper {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+      }
+
+      /* Simple approach: horizontal scroll for tables */
       .tableborder,
-      table[width] {
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-
-      /* Remove fixed widths from cells */
-      #wrapper td[width],
-      #wrapper th[width] {
-        width: auto !important;
-      }
-
-      /* Hide the table header row (FORUM, TOPICS, REPLIES, LAST POST INFO) */
-      .row2 {
-        display: none !important;
-      }
-
-      /* Hide TOPICS and REPLIES columns (2nd and 3rd cells) */
-      .row1 > td:nth-child(2),
-      .row1 > td:nth-child(3),
-      .row4 > td:nth-child(2),
-      .row4 > td:nth-child(3) {
-        display: none !important;
-      }
-
-      /* Forum name cell - full width */
-      .row1 > td:first-child,
-      .row4 > td:first-child {
+      #wrapper > table,
+      table.ipbtable {
         display: block !important;
         width: 100% !important;
-        padding: 12px !important;
-        border-bottom: 1px solid var(--bg-3) !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
       }
 
-      /* Last post info cell - full width, below forum name */
-      .row1 > td:last-child,
-      .row4 > td:last-child {
-        display: block !important;
-        width: 100% !important;
-        padding: 8px 12px !important;
-        font-size: 12px !important;
-        background: var(--bg-4) !important;
+      /* Minimum width to prevent squishing */
+      .tableborder table,
+      #wrapper table table {
+        min-width: 500px !important;
       }
 
-      /* Make forum rows stack their cells */
-      .row1, .row4 {
-        display: flex !important;
-        flex-wrap: wrap !important;
-      }
-
-      /* Category headers */
+      /* Category headers - keep readable */
       .maintitle {
+        font-size: 13px !important;
+        padding: 10px 8px !important;
+        white-space: nowrap !important;
+      }
+
+      /* Smaller text in cells */
+      td.row1, td.row2, td.row4 {
+        font-size: 12px !important;
+        padding: 8px 6px !important;
+      }
+
+      /* Post content - keep readable */
+      .postcolor, .post1, .post2, .signature {
         font-size: 14px !important;
-        padding: 10px 12px !important;
-      }
-
-      /* Category toggle buttons */
-      .maintitle img,
-      .catend img {
-        width: 20px !important;
-        height: 20px !important;
-      }
-
-      /* Post content readability */
-      .postcolor, .post1, .post2 {
-        font-size: 15px !important;
-        line-height: 1.6 !important;
+        line-height: 1.5 !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
       }
 
-      /* Breadcrumb wrap */
+      /* Breadcrumbs */
       #navstrip {
-        font-size: 12px !important;
+        font-size: 11px !important;
         word-wrap: break-word !important;
+        padding: 8px !important;
       }
 
-      /* Board stats section */
-      #boardstats td {
+      /* Board stats - stack cells */
+      #boardstats,
+      table[id*="stats"] {
         display: block !important;
         width: 100% !important;
-        padding: 8px 12px !important;
       }
 
-      /* Main content padding */
-      #wrapper {
-        padding-left: 8px !important;
-        padding-right: 8px !important;
+      #boardstats td,
+      table[id*="stats"] td {
+        display: block !important;
+        width: 100% !important;
+        padding: 8px !important;
+        border-bottom: 1px solid var(--bg-3) !important;
+      }
+
+      /* Footer links */
+      .ipblink, td.row2 a {
+        font-size: 11px !important;
       }
     }
 
     /* ========== JCINK MOBILE MODE OVERRIDES ========== */
     #mobile #wrapper {
-      padding: 8px !important;
+      padding: 4px !important;
     }
 
     #mobile .maintitle {
-      font-size: 13px !important;
+      font-size: 12px !important;
     }
   </style>
 </head>
