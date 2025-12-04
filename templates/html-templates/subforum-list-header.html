@@ -1,0 +1,35 @@
+<!--
+  JCINK HTML Template: Subforum List Header
+  Location: Admin CP > Skins & Templates > HTML Templates > Subforum List Header
+
+  This template wraps subforums when viewing a parent forum.
+  Uses the same Forum Row template for individual subforums.
+-->
+
+<div class="mb-6 mt-4">
+  <!-- Subforum Header -->
+  <div class="flex items-center gap-2 px-4 py-2 bg-forum-surface border border-forum-border rounded-t-lg">
+    <svg class="w-4 h-4 text-forum-muted" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/>
+    </svg>
+    <span class="text-forum-muted text-sm font-medium">Subforums</span>
+  </div>
+
+  <!-- Subforum List Container -->
+  <div class="bg-forum-bg border-x border-b border-forum-border rounded-b-lg overflow-hidden">
+
+    <!-- Desktop Header (hidden on mobile) -->
+    <div class="hidden md:grid md:grid-cols-12 gap-2 px-4 py-2 bg-forum-dark text-forum-subtle text-xs uppercase tracking-wider">
+      <div class="col-span-1"></div>
+      <div class="col-span-6">Forum</div>
+      <div class="col-span-1 text-center">Topics</div>
+      <div class="col-span-1 text-center">Replies</div>
+      <div class="col-span-3">Last Post</div>
+    </div>
+
+    <!-- Forum Rows -->
+    <div class="divide-y divide-forum-border">
+      <% FORUM_ROWS %>
+    </div>
+  </div>
+</div>

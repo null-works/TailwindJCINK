@@ -1,0 +1,46 @@
+<!--
+  JCINK HTML Template: Category List Header
+  Location: Admin CP > Skins & Templates > HTML Templates > Category List Header
+
+  Variables available:
+  - cat_id: Category ID number
+  - cat_name: Category name
+  - collapsed_class: CSS class when collapsed
+  - collapsed_style: Inline style when collapsed
+  - collapse_img: Collapse/expand image
+-->
+
+<div class="mb-6" id="cat-<!-- |cat_id| -->">
+  <!-- Category Header -->
+  <div class="flex items-center justify-between bg-forum-surface border border-forum-border rounded-t-lg px-4 py-3">
+    <h2 class="text-forum-text font-semibold text-base md:text-lg">
+      <a href="index.php?c=<!-- |cat_id| -->" class="hover:text-forum-accent transition-colors">
+        <!-- |cat_name| -->
+      </a>
+    </h2>
+    <button onclick="catcollapse('<!-- |cat_id| -->'); return false;"
+            class="p-2 text-forum-muted hover:text-forum-accent transition-colors"
+            aria-label="Toggle category">
+      <!-- |collapse_img| -->
+    </button>
+  </div>
+
+  <!-- Forum List Container -->
+  <div id="cat_<!-- |cat_id| -->" style="<!-- |collapsed_style| -->"
+       class="bg-forum-bg border-x border-b border-forum-border rounded-b-lg overflow-hidden">
+
+    <!-- Desktop Header (hidden on mobile) -->
+    <div class="hidden md:grid md:grid-cols-12 gap-2 px-4 py-2 bg-forum-dark text-forum-subtle text-xs uppercase tracking-wider">
+      <div class="col-span-1"></div>
+      <div class="col-span-6">Forum</div>
+      <div class="col-span-1 text-center">Topics</div>
+      <div class="col-span-1 text-center">Replies</div>
+      <div class="col-span-3">Last Post</div>
+    </div>
+
+    <!-- Forum Rows -->
+    <div class="divide-y divide-forum-border">
+      <% FORUM_ROWS %>
+    </div>
+  </div>
+</div>

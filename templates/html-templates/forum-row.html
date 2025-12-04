@@ -1,0 +1,110 @@
+<!--
+  JCINK HTML Template: Forum Row
+  Location: Admin CP > Skins & Templates > HTML Templates > Forum Row
+
+  Variables available:
+  - forum_id: Forum ID number
+  - name: Forum name (as link)
+  - name_text: Forum name (plain text)
+  - description: Forum description
+  - description_clean: Description without HTML
+  - img_new_post: New post indicator image
+  - topics: Topic count
+  - replies: Reply count
+  - last_post: Last post date/time
+  - last_topic: Last topic title
+  - last_unread: Unread indicator
+  - last_poster: Last poster name
+  - subforums: Subforum list
+  - moderators: Moderator list
+-->
+
+<!-- Desktop Layout (md and up) -->
+<div class="forum-row hidden md:grid md:grid-cols-12 gap-2 px-4 py-3 hover:bg-forum-surface/50 transition-colors items-center"
+     id="forum-<!-- |forum_id| -->">
+
+  <!-- Status Icon -->
+  <div class="col-span-1 flex justify-center">
+    <!-- |img_new_post| -->
+  </div>
+
+  <!-- Forum Info -->
+  <div class="col-span-6">
+    <a href="?showforum=<!-- |forum_id| -->"
+       class="text-forum-accent hover:text-forum-accent-hover font-medium text-base transition-colors">
+      <!-- |name_text| -->
+    </a>
+    <p class="text-forum-muted text-sm mt-1 line-clamp-2"><!-- |description| --></p>
+    <!-- |subforums| -->
+    <span class="text-forum-subtle text-xs"><!-- |moderators| --></span>
+  </div>
+
+  <!-- Topics -->
+  <div class="col-span-1 text-center text-forum-muted text-sm">
+    <!-- |topics| -->
+  </div>
+
+  <!-- Replies -->
+  <div class="col-span-1 text-center text-forum-muted text-sm">
+    <!-- |replies| -->
+  </div>
+
+  <!-- Last Post -->
+  <div class="col-span-3 text-sm">
+    <span class="text-forum-subtle text-xs"><!-- |last_post| --></span>
+    <div class="text-forum-muted truncate">
+      <!-- |last_unread| --><!-- |last_topic| -->
+    </div>
+    <span class="text-forum-subtle text-xs">By: <!-- |last_poster| --></span>
+  </div>
+</div>
+
+<!-- Mobile Layout (below md) -->
+<div class="forum-row-mobile md:hidden p-4 hover:bg-forum-surface/50 transition-colors"
+     id="forum-mobile-<!-- |forum_id| -->">
+
+  <!-- Top Row: Icon + Forum Name -->
+  <div class="flex items-start gap-3">
+    <div class="flex-shrink-0 mt-1">
+      <!-- |img_new_post| -->
+    </div>
+    <div class="flex-1 min-w-0">
+      <a href="?showforum=<!-- |forum_id| -->"
+         class="text-forum-accent hover:text-forum-accent-hover font-medium text-base transition-colors">
+        <!-- |name_text| -->
+      </a>
+      <p class="text-forum-muted text-sm mt-1 line-clamp-2"><!-- |description| --></p>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div class="flex items-center gap-4 mt-3 ml-8 text-xs text-forum-subtle">
+    <span class="flex items-center gap-1">
+      <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd"/>
+      </svg>
+      <!-- |topics| --> topics
+    </span>
+    <span class="flex items-center gap-1">
+      <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2z" clip-rule="evenodd"/>
+      </svg>
+      <!-- |replies| --> replies
+    </span>
+  </div>
+
+  <!-- Last Post Row -->
+  <div class="mt-3 ml-8 p-2 bg-forum-dark rounded text-xs">
+    <div class="text-forum-muted truncate">
+      <!-- |last_unread| --><!-- |last_topic| -->
+    </div>
+    <div class="text-forum-subtle mt-1">
+      <!-- |last_post| --> &middot; <!-- |last_poster| -->
+    </div>
+  </div>
+
+  <!-- Subforums (if any) -->
+  <div class="mt-2 ml-8 text-xs text-forum-subtle">
+    <!-- |subforums| -->
+  </div>
+</div>
